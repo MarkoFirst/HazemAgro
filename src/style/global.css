@@ -42,5 +42,5 @@
   width: 55px;
 }
 
-#rus { background: url('../images/icons/russia.png') no-repeat left center; }
-#en { background: url('../images/icons/usa.png') no-repeat left center; }
+#rus { background: url('../../images/icons/russia.png') no-repeat left center; }
+#en { background: url('../../images/icons/usa.png') no-repeat left center; }
