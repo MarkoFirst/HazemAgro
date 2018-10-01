@@ -1,0 +1,234 @@
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    transition: 1s;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+}
+
+.main_page {
+    width: 1366px;
+    height: 100%;
+    margin: 0 auto;
+    /*background: linear-gradient(rgba(155, 89, 182, 0.6), rgba(196, 102, 0, 0.6));*/
+    background-image: url(vintage-concrete.png);
+    position: relative;
+}
+@media screen and (max-width: 1366px) {
+	.main_page{
+		width: inherit;
+	}
+}
+.main_box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.stock_box {
+    width: 40%;
+    height: 500px;
+    border-radius: 10px;
+    background-image: url(mochaGrunge.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.table_box {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+.container-1-img,.container-2-img,.container-3-img{
+	position: absolute;
+	border-radius: 10px;
+	
+}
+.stock_box img:hover{
+	filter: grayscale(100%);
+}
+ 
+.container-1-img {
+    width: 300px;
+    height: 102px;
+    top: 20px;
+    left: 50%;
+    margin-left: -150px;
+}
+
+.container-2-img {
+    height: 300px;
+    width: 102px;
+    top: 150px;
+    left: 10%;
+}
+
+.container-3-img {
+    height: 300px;
+    width: 102px;
+    top: 150px;
+    right: 10%;
+}
+footer{
+	 height: 50px;border: 2px solid;position: absolute;bottom: 0px;width: 100%
+}
+@media screen and (max-width: 800px) {
+	.main_page{
+		height: auto;
+	}
+	.main_box {
+		flex-direction: column;
+		text-align: -webkit-center;
+	}
+	.table_box,.stock_box{
+		width: 70%;
+		    margin-bottom: 50px;
+	}
+	footer{
+		position: relative;
+		display: block;
+	}
+
+}
+@media (max-height:652px) and (min-width:800px) {
+    .main_page{
+    	height: 650px;
+    }
+}
+@media screen and (max-width: 500px) {
+.table_box, .stock_box {
+    width: 95%;}
+    .stock_box {
+    	height: 340px;
+    }
+    .container-1-img{
+    	width: 210px;
+    	height: 70px;
+    	    margin-left: -105px;
+    }
+    .container-2-img{
+    	height:  210px;
+    	width:  70px;
+    	    top: 110px;
+    }
+    .container-3-img{
+    	height:  210px;
+    	width:  70px;
+    	    top: 110px;
+    }
+}
+@media screen and (max-width: 370px) {
+.table_box table{
+	font-size: 14px;
+	word-break: break-word;
+}
+}
+
+</style>
+<html lang="ru">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- <link href="style.css" rel="stylesheet"> -->
+<div class="main_page">
+    <header style="height: 50px;border: 2px solid;">
+        <p style="font-size: 35px;">HEDER</p>
+    </header>
+    <div class="main_box">
+        <div class="stock_box">
+            <div class="container-1">
+                <img class="container-1-img" src="gabariti-40.jpg" alt="">
+            </div>
+            <div class="container-2">
+                <img class="container-2-img" src="gabariti2-40.jpg" alt="">
+            </div>
+            <div class="container-3">
+                <img class="container-3-img" src="gabariti2-40.jpg" alt="">
+            </div>
+        </div>
+        <div class="table_box">
+            <table border="1">
+                <caption>Таблица размеров обуви</caption>
+                <tr>
+                    <th>Россия</th>
+                    <th>Великобритания</th>
+                    <th>Европа</th>
+                    <th>Длина ступни, см</th>
+                </tr>
+                <tr>
+                    <td>34,5</td>
+                    <td>3,5</td>
+                    <td>36</td>
+                    <td>23</td>
+                </tr>
+                <tr>
+                    <td>35,5</td>
+                    <td>4</td>
+                    <td>36⅔</td>
+                    <td>23–23,5</td>
+                </tr>
+                <tr>
+                    <td>36</td>
+                    <td>4,5</td>
+                    <td>37⅓</td>
+                    <td>23,5</td>
+                </tr>
+                <tr>
+                    <td>36,5</td>
+                    <td>5</td>
+                    <td>38</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>37</td>
+                    <td>5,5</td>
+                    <td>38⅔</td>
+                    <td>24,5</td>
+                </tr>
+                <tr>
+                    <td>38</td>
+                    <td>6</td>
+                    <td>39⅓</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>38,5</td>
+                    <td>6,5</td>
+                    <td>40</td>
+                    <td>25,5</td>
+                </tr>
+                <tr>
+                    <td>39</td>
+                    <td>7</td>
+                    <td>40⅔</td>
+                    <td>25,5–26</td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td>7,5</td>
+                    <td>41⅓</td>
+                    <td>26</td>
+                </tr>
+                <tr>
+                    <td>40,5</td>
+                    <td>8</td>
+                    <td>42</td>
+                    <td>26,5</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+    <footer>
+    	<p style="font-size: 35px;">FOOTER</p>
+    </footer>	
+</div>
