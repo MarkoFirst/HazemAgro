@@ -1,0 +1,110 @@
+.main_page {
+    width: 1366px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+@media screen and (max-width: 1366px) {
+    .main_page{
+        width: inherit;
+    }
+}
+.main_box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+}
+.stock_box {
+    width: 40%;
+    height: 500px;
+    border-radius: 10px;
+    background: url(/src/assets/images/mochaGrunge.png) no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.table_box {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-1-img, .container-2-img, .container-3-img{
+    position: absolute;
+    border-radius: 10px;
+}
+
+.stock_box img:hover{
+    filter: grayscale(100%);
+}
+
+.container-1-img {
+    width: 300px;
+    height: 102px;
+    top: 20px;
+    left: 50%;
+    margin-left: -150px;
+}
+.container-2-img {
+    height: 300px;
+    width: 102px;
+    top: 150px;
+    left: 10%;
+}
+.container-3-img {
+    height: 300px;
+    width: 102px;
+    top: 150px;
+    right: 10%;
+}
+@media screen and (max-width: 800px) {
+    .main_page{
+        height: auto;
+    }
+    .main_box {
+        flex-direction: column;
+        text-align: -webkit-center;
+    }
+    .table_box,.stock_box{
+        width: 70%;
+        margin-bottom: 50px;
+    }
+    footer{
+        position: relative;
+        display: block;
+    }
+}
+@media (max-height:652px) and (min-width:800px) {
+    .main_page{
+        height: 650px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .table_box, .stock_box {
+        width: 95%;}
+    .stock_box {
+        height: 340px;
+    }
+    .container-1-img{
+        width: 210px;
+        height: 70px;
+        margin-left: -105px;
+    }
+    .container-2-img{
+        height:  210px;
+        width:  70px;
+        top: 110px;
+    }
+    .container-3-img{
+        height:  210px;
+        width:  70px;
+        top: 110px;
+    }
+}
+@media screen and (max-width: 370px) {
+    .table_box table{
+        font-size: 14px;
+        word-break: break-word;
+    }
+}
