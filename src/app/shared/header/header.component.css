@@ -15,8 +15,8 @@
     color: black;
 }
 #header #language img{
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     margin: 5px;
 }
 #language > div {
@@ -30,10 +30,10 @@
     justify-content: flex-start;
 }
 .left-header-blocks {
-    width: 130px;
+    width: 100px;
     background-color: bisque;
     text-align: center;
-    font-size: 30px;
+    font-size: 22px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     margin-right: 10px;
@@ -68,7 +68,7 @@
         right: 5px;
     }
     #header:hover {
-        left: 0px;
+        left: 0;
     }
     #header #language img{
         width: 25px;

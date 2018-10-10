@@ -1,4 +1,4 @@
-.auth_form {
+.registration_form {
     border-radius: 4px;
     background-color: rgba(220, 220, 220, 0.55);
     width: 340px;
@@ -6,13 +6,17 @@
     padding-bottom: 20px;
     margin: 60px auto 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: 4s;
+    backface-visibility: hidden;
 }
+
 .logo {
     width: 58px;
     height: 50px;
     margin: 0 auto 20px;
     cursor: pointer;
 }
+
 .main-form {
     margin: 0 auto;
     width: 80%;
@@ -64,11 +68,14 @@ input {
 button {
     outline: none;
 }
-.green-text{
+.green-text {
     text-decoration: none;
     color: #4CAF50;
 }
-.login, .pas{
+.login,
+.pas,
+.pas-2,
+.pas-admin {
     font-size: 16px;
     width: 100%;
     height: 30px;
