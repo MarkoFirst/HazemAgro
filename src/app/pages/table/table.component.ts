@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+import {DataBaseService} from "../../services/db/data-base.service";
+import {IDelivery} from "../../config/interfaces/IDelivery";
 
 @Component({
   selector: 'app-table',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+	deliveries$: Observable<IDelivery[]>;
+
+  constructor(public dbService: DataBaseService) { }
 
   ngOnInit() {
+    this.deliveries$ = this.dbService.selectDB<IDelivery>('delivery');
   }
-
 }

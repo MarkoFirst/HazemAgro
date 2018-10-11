@@ -17,6 +17,8 @@ import {FooterComponent} from "./shared/footer/footer.component";
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { TableComponent } from './pages/table/table.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
+import {DataBaseService} from "./services/db/data-base.service";
+import {FormsModule} from "@angular/forms";
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyDi41jC_ngyXBuHU4EL9kRra9T2lMo_lOI',
@@ -41,13 +43,14 @@ export const firebaseConfig = {
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
+		FormsModule,
 		AngularFireModule.initializeApp(firebaseConfig),
 		AngularFireAuthModule,
 		AngularFirestoreModule,
 		AngularFireDatabaseModule,
 		AngularFireStorageModule,
 	],
-	providers: [AuthService, CanActivateViaAuthGuard],
+	providers: [AuthService, CanActivateViaAuthGuard, DataBaseService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

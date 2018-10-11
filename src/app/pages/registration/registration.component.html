@@ -1,13 +1,24 @@
-<div class="registration_form">
+<form #f="ngForm" class="registration_form" (ngSubmit)="onSubmit(f)">
   <div class="main-form">
     <div class="logo">
       <img class="logo" src="/src/assets/images/icons/logo.png"/>
     </div>
-    <input class="login" type="text" placeholder="Login">
-    <input class="pas" type="password" placeholder="Password">
-    <input class="pas-2" style="margin-bottom: 40px;" type="password" placeholder="Repeat password">
-    <input class="pas-admin" type="password" placeholder="Admin password">
-    <button class="save">Создать</button>
-    <p style="text-align: center;font-size: 13px;">Уже зарегестрированы? <a routerLink="/" class="green-text">Войти</a></p>
+    <input class="login" type="text" placeholder="Login" name="login" #login="ngModel"
+           minlength="4" required ngModel>
+    <input class="pas" type="password" placeholder="Password" name="password" #psw="ngModel"
+           minlength="8" required ngModel>
+    <input class="pas-2" type="password" placeholder="Repeat password" name="repeatPassword" #rptPsw="ngModel"
+           minlength="8" required ngModel>
+    <input class="pas-admin" type="password" placeholder="Admin password" name="adminPassword" #adminPsw="ngModel"
+           minlength="8" required ngModel>
+    <button class="save" type="submit">Создать</button>
+    <p style="text-align: center; font-size: 13px;">Уже зарегестрированы? <a routerLink="/" class="green-text">Войти</a></p>
   </div>
+</form>
+
+<div *ngIf="f.invalid" class="error">
+  <h2 *ngIf="login.invalid && (login.dirty || login.touched)">Enter correct login</h2>
+  <h2 *ngIf="(psw.invalid || rptPsw.invalid || psw.value !== rptPsw.value) &&
+             (psw.dirty || psw.touched) && (rptPsw.dirty || rptPsw.touched)">Enter correct password</h2>
+  <h2 *ngIf="adminPsw.invalid && (adminPsw.dirty || adminPsw.touched)">Enter correct admin password</h2>
 </div>

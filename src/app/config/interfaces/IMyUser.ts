@@ -3,4 +3,5 @@ export interface IMyUser {
     login: string;
     password: string;
     mail: string;
+    isAdmin?: boolean;
 }

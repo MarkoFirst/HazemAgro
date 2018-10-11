@@ -1,3 +1,10 @@
-<p>
-  delivery works!
-</p>
+<form class="delivery_form">
+  <div class="main-form">
+    <select name="products" id="products">
+      <option *ngFor="let product of products$ | async" (value)="product.id">{{product.name}}</option>
+    </select>
+    <input type="number" placeholder="Weight">
+    <input type="text" placeholder="Provider">
+    <button class="save" type="submit">Add</button>
+  </div>
+</form>

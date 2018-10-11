@@ -1,3 +1,8 @@
-<p>
-  table works!
-</p>
+<table border="1">
+  <caption>Testing</caption>
+  <tr *ngFor="let delivery of deliveries$ | async">
+    <th>{{delivery.id}}</th>
+    <th>{{delivery.idProduct}}</th>
+    <th>{{delivery.weight}}</th>
+  </tr>
+</table>

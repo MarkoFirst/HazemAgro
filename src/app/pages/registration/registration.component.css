@@ -87,6 +87,10 @@ button {
     background-color: transparent;
 }
 
+.pas-2 {
+    margin-bottom: 40px;
+}
+
 .save {
     display: block;
     font-size: 18px;

@@ -84,10 +84,6 @@ export class AuthService implements OnDestroy {
             .signOut();
     }
 
-    changePassword(newPassword: string): void {
-        this.firebaseAuth.auth.currentUser.updatePassword(newPassword);
-    }
-
     ngOnDestroy(): void {
         this.onDestroyStream$.next();
         this.onDestroyStream$.complete();

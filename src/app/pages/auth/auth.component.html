@@ -1,13 +1,18 @@
-<div class="auth_form">
+<form #f="ngForm" class="auth_form" (ngSubmit)="onSubmit(f)">
   <div class="main-form">
     <div class="logo">
-      <img class="logo" src="/src/assets/images/icons/logo.png" alt="">
+				<img class="logo" src="/src/assets/images/icons/logo.png">
     </div>
-    <input class="login" type="text" placeholder="Login">
-    <input class="pas" type="password" placeholder="Password">
-    <button class="save">Войти</button>
+    <input class="login" type="text" placeholder="Login" name="login" required ngModel>
+    <input class="pas" type="password" placeholder="Password" name="password" required ngModel>
+    <button class="save" type="submit">Войти</button>
     <p style="text-align: center;font-size: 13px;">Не зарегестрированы?
       <a routerLink="/registration" class="green-text">Создать аккаунт</a>
     </p>
   </div>
+</form>
+
+<div *ngIf="f.invalid" class="error">
+  <h2>Enter login</h2>
+  <h2>Enter password</h2>
 </div>

@@ -12,3 +12,8 @@ body {
     background-image: url(/src/assets/images/vintage-concrete.png);
 }
 
+.error {
+    width: 100%;
+    color: red;
+    text-align: center;
+}
