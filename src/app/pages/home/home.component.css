@@ -1,3 +1,7 @@
+#dataBox {
+    position: absolute;
+}
+
 .main_page {
     width: 1366px;
     height: 100%;

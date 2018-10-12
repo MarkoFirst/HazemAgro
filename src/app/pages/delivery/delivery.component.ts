@@ -10,6 +10,8 @@ import {DataBaseService} from "../../services/db/data-base.service";
 })
 export class DeliveryComponent implements OnInit {
 	products$: Observable<IProduct[]>;
+	connectError: boolean = false;
+	connectDone: boolean = false;
 
   constructor(public dbService: DataBaseService) { }
 
@@ -17,4 +19,21 @@ export class DeliveryComponent implements OnInit {
 	  this.products$ = this.dbService.selectDB<IProduct>('product');
   }
 
+  addDelivery(form) {
+	  this.dbService.addNewDelivery({
+		  date: Date.now().toString(),
+		  idProduct: form.value.products,
+		  isSupply: form.value.supply,
+		  weight: form.value.weight,
+		  provider: form.value.provider,
+		  storage: form.value.storage,
+	  }).then(() => this.connectDone = true)
+		  .catch(() => this.connectError = true)
+	  ;
+	  setTimeout(() => {
+	  	this.connectDone = false;
+	  	this.connectError = false;
+	  }, 4000);
+	  form.reset();
+  }
 }

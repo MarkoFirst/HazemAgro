@@ -4,12 +4,13 @@
     margin: 0 auto 20px;
     cursor: pointer;
 }
+
 .main-form {
     margin: 0 auto;
     width: 80%;
 }
 
-.green-text{
+.green-text {
     text-decoration: none;
     color: #4CAF50;
 }

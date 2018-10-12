@@ -19,6 +19,10 @@ import { TableComponent } from './pages/table/table.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import {DataBaseService} from "./services/db/data-base.service";
 import {FormsModule} from "@angular/forms";
+import { CreateProductComponent } from './pages/create-product/create-product.component';
+import { InternalMovementComponent } from './pages/internal-movement/internal-movement.component';
+import { StoreDataComponent } from './components/store-data/store-data.component';
+import { InfoBlockComponent } from './shared/info-block/info-block.component';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyDi41jC_ngyXBuHU4EL9kRra9T2lMo_lOI',
@@ -38,7 +42,11 @@ export const firebaseConfig = {
 		FooterComponent,
 		RegistrationComponent,
 		TableComponent,
-		DeliveryComponent
+		DeliveryComponent,
+		CreateProductComponent,
+		InternalMovementComponent,
+		StoreDataComponent,
+		InfoBlockComponent
 	],
 	imports: [
 		AppRoutingModule,

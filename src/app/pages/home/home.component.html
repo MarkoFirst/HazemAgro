@@ -1,6 +1,7 @@
 <div class="main_page">
   <div class="main_box">
-	  <div class="stock_box">
+
+	  <div class="stock_box" (mouseenter)="showStorData($event)" (mouseleave)="noneStorData()">
       <div class="container-1">
 	      <img class="container-1-img" src="/src/assets/images/gabariti40.jpg" alt="">
       </div>
@@ -11,6 +12,11 @@
         <img class="container-3-img" src="/src/assets/images/gabariti2-40.jpg" alt="">
       </div>
     </div>
+
+    <div id="dataBox" [style.display]="isShowSrorData ? 'block' : 'none'">
+      <app-store-data></app-store-data>
+    </div>
+
     <div class="table_box">
       <table border="1">
         <caption>Last deliveries</caption>
@@ -28,5 +34,5 @@
         </tr>
       </table>
     </div>
-	</div>
+  </div>
 </div>

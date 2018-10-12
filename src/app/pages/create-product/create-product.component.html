@@ -1,0 +1,19 @@
+<form #form="ngForm" class="movement_form" (ngSubmit)="create(form)">
+  <div class="main-form">
+    <input type="text" placeholder="Name" name="name" ngModel>
+
+    <button class="save" type="submit">Add</button>
+  </div>
+</form>
+
+<div *ngIf="form.invalid" class="error">
+
+</div>
+
+<div *ngIf="connectError" class="error">
+  <h2>Problem with connection! Try again!</h2>
+</div>
+
+<div *ngIf="connectDone" class="done">
+  <h2>Create done!</h2>
+</div>
