@@ -1,5 +1,7 @@
-<div id="data">
-  <p>греча: 50т</p>
-  <p>манка: 100т</p>
-  <p>рис: 200т</p>
+<div id="data" *ngFor="let stor of products$ | async">
+  <div>
+    <p *ngFor="let key of objectKeys(stor.filling)">
+      {{getProductName(key)}} : {{stor.filling[key]}}
+    </p>
+  </div>
 </div>

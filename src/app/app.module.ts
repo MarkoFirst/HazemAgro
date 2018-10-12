@@ -23,6 +23,7 @@ import { CreateProductComponent } from './pages/create-product/create-product.co
 import { InternalMovementComponent } from './pages/internal-movement/internal-movement.component';
 import { StoreDataComponent } from './components/store-data/store-data.component';
 import { InfoBlockComponent } from './shared/info-block/info-block.component';
+import {StoreService} from "./services/store/store.service";
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyDi41jC_ngyXBuHU4EL9kRra9T2lMo_lOI',
@@ -58,7 +59,7 @@ export const firebaseConfig = {
 		AngularFireDatabaseModule,
 		AngularFireStorageModule,
 	],
-	providers: [AuthService, CanActivateViaAuthGuard, DataBaseService],
+	providers: [AuthService, CanActivateViaAuthGuard, DataBaseService, StoreService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

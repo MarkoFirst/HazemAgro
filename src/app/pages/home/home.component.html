@@ -1,20 +1,19 @@
 <div class="main_page">
   <div class="main_box">
 
-	  <div class="stock_box" (mouseenter)="showStorData($event)" (mouseleave)="noneStorData()">
-      <div class="container-1">
+	  <div class="stock_box">
+      <div class="container-1" (mouseenter)="showStorData($event)" (mouseleave)="noneStorData()">
 	      <img class="container-1-img" src="/src/assets/images/gabariti40.jpg" alt="">
       </div>
-      <div class="container-2">
+      <div class="container-2" (mouseenter)="showStorData($event)" (mouseleave)="noneStorData()">
         <img class="container-2-img" src="/src/assets/images/gabariti2-40.jpg" alt="">
       </div>
-      <div class="container-3">
+      <div id="dataBox">
+        <app-store-data></app-store-data>
+      </div>
+      <div class="container-3" (mouseenter)="showStorData($event)" (mouseleave)="noneStorData()">
         <img class="container-3-img" src="/src/assets/images/gabariti2-40.jpg" alt="">
       </div>
-    </div>
-
-    <div id="dataBox" [style.display]="isShowSrorData ? 'block' : 'none'">
-      <app-store-data></app-store-data>
     </div>
 
     <div class="table_box">
@@ -27,8 +26,8 @@
           <th>Route</th>
         </tr>
         <tr *ngFor="let delivery of deliveries$ | async">
-          <th>{{delivery.date}}</th>
-          <th>{{delivery.idProduct}}</th>
+          <th>{{delivery.date | date: 'dd.mm.yyyy'}}</th>
+          <th>{{prosuctList[delivery.idProduct].name}}</th>
           <th>{{delivery.weight}}</th>
           <th>{{delivery.isSupply ? 'in' : 'out'}}</th>
         </tr>

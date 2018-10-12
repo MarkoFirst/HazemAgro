@@ -1,6 +1,7 @@
 #data {
-    width: 200px;
-    height: 400px;
+    width: calc(50% - 100px);
+    margin: auto;
+    height: 240px;
     background-color: #616161;
     border-radius: 15px;
     color: white;
