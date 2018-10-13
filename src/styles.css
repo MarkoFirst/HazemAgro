@@ -15,10 +15,6 @@ body {
     margin: 0;
     background-image: url(/src/assets/images/vintage-concrete.png);
 }
-.wraper{
-    min-height: 100%;
-    position: relative;
-}
 input::-webkit-input-placeholder {
     opacity: 1;
     transition: opacity 0.3s ease;
