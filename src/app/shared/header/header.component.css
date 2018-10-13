@@ -9,6 +9,7 @@
     height: 50px;
     background-color: #9E9E9E;
     padding: 0 20px;
+    z-index: 2;
 }
 #header .tabs a{
     text-decoration: none;
@@ -48,30 +49,26 @@
 #language > div {
     width: 55px;
 }
-.hamburger{
+#header .tabs a div i{
     display: none;
-    width: 30px;
-    height: 30px;
 }
 @media(max-width:414px) {
+    #header .tabs a div p{
+        display: none;
+    }
+    #header .tabs a div i{
+        display: block;
+    }
+
     .left-header-blocks {
-        width: 80px;
-        font-size: 20px;
+        width: 34px;
+        height: 33px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5%;
     }
     #header {
-        left: -100%;
-        height: 35px;
-    }
-    .hamburger{
-        display: flex;
-        position: absolute;
-        right: 5px;
-    }
-    #header:hover {
-        left: 0;
-    }
-    #header #language img{
-        width: 25px;
-        height: 25px;
+        height: 47px;
     }
 }

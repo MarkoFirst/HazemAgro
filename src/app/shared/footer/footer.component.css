@@ -1,25 +1,18 @@
 #footer{
+    background-color: #454e6f;
+    width: 100%;
+    margin-top: 50px;
+    height: 50px;
     display: flex;
-    justify-content: space-between;
-    height: 100px;
+    justify-content: space-around;
+    align-items: center;
     position: absolute;
     bottom: 0;
-    width: 100%;
-    background: url("/src/assets/images/sunflower2.png") bottom;
-    background-size: 120px;
-    background-repeat-y: no-repeat;
 }
 .footer-text,.creators{
     display: inline-block;
+    color: #FFFFFF;
     margin: 0;
-    padding: 30px 20px 0;
 }
 @media(max-width:414px) {
-    .footer-text, .creators {
-        padding: 64px 20px 0;
-    }
-    #footer{
-        position: relative;
-        background-size: 40%;
-    }
 }
