@@ -16,9 +16,12 @@
   </div>
 </form>
 
-<div *ngIf="f.invalid" class="error">
-  <h2 *ngIf="login.invalid && (login.dirty || login.touched)">Enter correct login</h2>
-  <h2 *ngIf="(psw.invalid || rptPsw.invalid || psw.value !== rptPsw.value) &&
-             (psw.dirty || psw.touched) && (rptPsw.dirty || rptPsw.touched)">Enter correct password</h2>
-  <h2 *ngIf="adminPsw.invalid && (adminPsw.dirty || adminPsw.touched)">Enter correct admin password</h2>
-</div>
+<app-info-block
+    [inputList]="[login, psw, rptPsw, adminPsw]"
+    [errorList]="[
+        'Enter correct login',
+        'Enter correct password',
+        'Enter correct second password',
+        'Enter correct admin password'
+    ]"
+></app-info-block>
