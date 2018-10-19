@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable, Subject} from "rxjs";
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
 import {DataBaseService} from "../../services/db/data-base.service";
 import {IStorage} from "../../config/interfaces/IStorage";
 import {StoreService} from "../../services/store/store.service";
@@ -12,18 +12,20 @@ import {IProduct} from "../../config/interfaces/IProduct";
 })
 export class StoreDataComponent implements OnInit {
 
-	products$: Observable<IStorage[]>;
+	@Input() idStore: number;
+
+	storages$: Observable<IStorage[]>;
 	productList: IProduct[];
 
   constructor(public dbService: DataBaseService, public storeService: StoreService) { }
 
   ngOnInit() {
-	  this.products$ = this.dbService.selectDB<IStorage>('storage');
+	  this.storages$ = this.dbService.selectDB<IStorage>('storage');
 	  this.storeService.productList.subscribe(i => this.productList = i);
   }
 
 	objectKeys(obj) {
-    return Object.keys(obj);
+    return obj ? Object.keys(obj) : null;
   }
 
   getProductName(key) {

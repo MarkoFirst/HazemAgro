@@ -1,8 +1,33 @@
-<table border="1">
-  <caption>Testing</caption>
-  <tr *ngFor="let delivery of deliveries$ | async">
-    <th>{{delivery.id}}</th>
-    <th>{{delivery.idProduct}}</th>
-    <th>{{delivery.weight}}</th>
-  </tr>
-</table>
+<div class="table_box">
+  <table border="1">
+    <caption>Last deliveries</caption>
+    <tr>
+      <th>Date</th>
+      <th>Product</th>
+      <th>Provider</th>
+      <th>Weight</th>
+      <th>Fraction (%) <br><span>( big / small / standard / waste )</span></th>
+      <th>Route</th>
+    </tr>
+    <tr *ngFor="let delivery of (deliveries$ | async)?.slice().reverse() | slice:0:10">
+      <td>{{delivery.date | date: 'dd.MM.yy / HH:mm'}}</td>
+      <td>{{findProductName(delivery.idProduct)}}</td>
+      <td>{{delivery.provider}}</td>
+      <td>{{delivery.weight}}</td>
+      <td>
+        <ng-container *ngIf="delivery.isSupply; else oneFraction">
+          {{delivery.big || 0}} / {{delivery.small || 0}} / {{delivery.standard || 0}} / {{delivery.waste || 0}}
+        </ng-container>
+        <ng-template #oneFraction>
+          {{delivery.fraction}}
+        </ng-template>
+      </td>
+      <td>
+        <i class="fas"
+           [ngClass]="delivery.isSupply ? 'fa-sign-in-alt' : 'fa-sign-out-alt'"
+           [style.color]="delivery.isSupply ? 'green' : 'saddlebrown'">
+        </i>
+      </td>
+    </tr>
+  </table>
+</div>

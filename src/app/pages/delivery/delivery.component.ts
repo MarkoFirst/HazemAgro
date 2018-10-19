@@ -13,7 +13,7 @@ export class DeliveryComponent implements OnInit {
 	connectError: boolean = false;
 	connectDone: boolean = false;
 
-  constructor(public dbService: DataBaseService) { }
+  constructor(public dbService: DataBaseService) {}
 
   ngOnInit() {
 	  this.products$ = this.dbService.selectDB<IProduct>('product');
@@ -22,12 +22,18 @@ export class DeliveryComponent implements OnInit {
   addDelivery(form) {
 	  this.dbService.addNewDelivery({
 		  date: Date.now().toString(),
-		  idProduct: form.value.products,
-		  isSupply: form.value.supply,
+		  idProduct: JSON.parse(form.value.products).id,
+		  isSupply: form.value.supply !== 'false',
 		  weight: form.value.weight,
 		  provider: form.value.provider,
 		  storage: form.value.storage,
-	  }).then(() => this.connectDone = true)
+		  standard: form.value.waste ? 100 - form.value.waste - form.value.big - form.value.small : null,
+		  waste: form.value.waste || null,
+		  big: form.value.big || null,
+		  small: form.value.small || null,
+		  fraction: form.value.fraction || null,
+	  }, JSON.parse(form.value.products))
+		  .then(() => this.connectDone = true)
 		  .catch(() => this.connectError = true)
 	  ;
 	  setTimeout(() => {

@@ -54,7 +54,7 @@
     border-radius: 10px;
 }
 
-.stock_box img:hover{
+.active-store{
     filter: grayscale(100%);
 }
 
@@ -69,13 +69,13 @@
     height: 300px;
     width: 102px;
     top: 150px;
-    left: 10%;
+    left: 5%;
 }
 .container-3-img {
     height: 300px;
     width: 102px;
     top: 150px;
-    right: 10%;
+    right: 5%;
 }
 @media screen and (max-width: 800px) {
     .main_page{
@@ -121,11 +121,13 @@
         height:  210px;
         width:  70px;
         top: 110px;
+        left: 4%;
     }
     .container-3-img{
         height:  210px;
         width:  70px;
         top: 110px;
+        right: 4%;
     }
 }
 @media screen and (max-width: 370px) {

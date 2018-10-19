@@ -39,3 +39,9 @@ a {
     background-color: #000000;
     color: #FFFFFF
 }
+
+@media screen and (max-width: 500px) {
+    form {
+        margin-top: 0;
+    }
+}

@@ -1,7 +1,32 @@
-<div id="data" *ngFor="let stor of products$ | async">
-  <div>
-    <p *ngFor="let key of objectKeys(stor.filling)">
-      {{getProductName(key)}} : {{stor.filling[key]}}
-    </p>
-  </div>
+<div id="data" (click)="$event.stopPropagation()">
+	<div *ngFor="let store of storages$ | async; let item = index">
+		<ng-container *ngIf="item === idStore">
+			<h2>{{idStore+1}}</h2>
+			<p *ngFor="let key of objectKeys(store.filling)">
+				<ng-container
+						*ngIf="store.filling[key].big || store.filling[key].small || store.filling[key].standard || store.filling[key].waste; else empty">
+					{{getProductName(key)}}:
+					<br>
+					<span>{{store.filling[key].big}}/</span>
+					<span>{{store.filling[key].small}}/</span>
+					<span>{{store.filling[key].standard}}/</span>
+					<span>{{store.filling[key].waste}}</span>
+				</ng-container>
+				<ng-template #empty>Empty!</ng-template>
+			</p>
+		</ng-container>
+	</div>
+	<ng-container *ngIf="idStore === 4">
+		<div>
+			<h2>All storage</h2>
+			<p *ngFor="let product of productList">
+				{{product.name}}:
+				<br>
+				<span>{{product.big}} / </span>
+				<span>{{product.small}} / </span>
+				<span>{{product.standard}} / </span>
+				<span>{{product.waste}}</span>
+			</p>
+		</div>
+	</ng-container>
 </div>

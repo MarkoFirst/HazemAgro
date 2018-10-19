@@ -1,37 +1,42 @@
-<div class="main_page">
-  <div class="main_box">
+<div class="main_page" (click)="showStorData($event, 4)">
+	<div class="main_box">
 
-	  <div class="stock_box">
-      <div class="container-1" (mouseenter)="showStorData($event)" (mouseleave)="noneStorData()">
-	      <img class="container-1-img" src="/src/assets/images/gabariti40.jpg" alt="">
-      </div>
-      <div class="container-2" (mouseenter)="showStorData($event)" (mouseleave)="noneStorData()">
-        <img class="container-2-img" src="/src/assets/images/gabariti2-40.jpg" alt="">
-      </div>
-      <div id="dataBox">
-        <app-store-data></app-store-data>
-      </div>
-      <div class="container-3" (mouseenter)="showStorData($event)" (mouseleave)="noneStorData()">
-        <img class="container-3-img" src="/src/assets/images/gabariti2-40.jpg" alt="">
-      </div>
-    </div>
+		<div class="stock_box">
+			<div class="container-1" (click)="showStorData($event, 1)">
+				<img class="container-1-img" src="/src/assets/images/gabariti40.jpg" [class.active-store]="idStore === 1">
+			</div>
+			<div class="container-2" (click)="showStorData($event, 2)">
+				<img class="container-2-img" src="/src/assets/images/gabariti2-40.jpg" [class.active-store]="idStore === 2">
+			</div>
+			<div id="dataBox">
+				<app-store-data [idStore]="idStore"></app-store-data>
+			</div>
+			<div class="container-3" (click)="showStorData($event, 0)">
+				<img class="container-3-img" src="/src/assets/images/gabariti2-40.jpg" [class.active-store]="idStore === 0">
+			</div>
+		</div>
 
-    <div class="table_box">
-      <table border="1">
-        <caption>Last deliveries</caption>
-        <tr>
-          <th>Date</th>
-          <th>Product</th>
-          <th>Weight</th>
-          <th>Route</th>
-        </tr>
-        <tr *ngFor="let delivery of deliveries$ | async">
-          <th>{{delivery.date | date: 'dd.mm.yyyy'}}</th>
-          <th>{{prosuctList[delivery.idProduct].name}}</th>
-          <th>{{delivery.weight}}</th>
-          <th>{{delivery.isSupply ? 'in' : 'out'}}</th>
-        </tr>
-      </table>
-    </div>
-  </div>
+		<div class="table_box">
+			<table border="1">
+				<caption>Last deliveries</caption>
+				<tr>
+					<th>Date</th>
+					<th>Product</th>
+					<th>Weight</th>
+					<th>Route</th>
+				</tr>
+				<tr *ngFor="let delivery of (deliveries$ | async)?.slice().reverse() | slice:0:10">
+					<th>{{delivery.date | date: 'dd.MM.yy / HH:mm'}}</th>
+					<th>{{findProductName(delivery.idProduct)}}</th>
+					<th>{{delivery.weight}}</th>
+					<th>
+						<i class="fas"
+						   [ngClass]="delivery.isSupply ? 'fa-sign-in-alt' : 'fa-sign-out-alt'"
+						   [style.color]="delivery.isSupply ? 'green' : 'saddlebrown'">
+						</i>
+					</th>
+				</tr>
+			</table>
+		</div>
+	</div>
 </div>

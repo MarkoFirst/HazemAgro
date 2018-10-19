@@ -1,12 +1,36 @@
 #data {
-    width: calc(50% - 100px);
+    width: calc(50% - 20px);
     margin: auto;
-    height: 240px;
+    height: 270px;
     background-color: #616161;
     border-radius: 15px;
     color: white;
-    padding: 20px;
+    padding: 10px;
+    text-align: left;
+    overflow-y: scroll;
 }
+
+p {
+    margin: 4px;
+}
+
+span {
+    margin-left: 4px;
+}
+
+h2 {
+    margin: 0;
+    text-align: center;
+}
+
 @media screen and (max-width: 500px) {
-    #data {height: 165px;}
+    #data {
+        width: calc(50% - 20px);
+        height: 195px;
+        font-size: 14px;
+    }
+
+    span {
+        margin-left: 0;
+    }
 }
