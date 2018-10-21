@@ -1,7 +1,7 @@
 <div id="data" (click)="$event.stopPropagation()">
 	<div *ngFor="let store of storages$ | async; let item = index">
 		<ng-container *ngIf="item === idStore">
-			<h2>{{idStore+1}}</h2>
+			<h2>Storage {{idStore+1}}</h2>
 			<p *ngFor="let key of objectKeys(store.filling)">
 				<ng-container
 						*ngIf="store.filling[key].big || store.filling[key].small || store.filling[key].standard || store.filling[key].waste; else empty">
@@ -27,6 +27,7 @@
 				<span>{{product.standard}} / </span>
 				<span>{{product.waste}}</span>
 			</p>
+
 		</div>
 	</ng-container>
 </div>

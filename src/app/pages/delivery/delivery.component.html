@@ -1,25 +1,25 @@
 <form #form="ngForm" class="delivery_form" (ngSubmit)="addDelivery(form)">
   <div class="main-form">
     <label for="supply">Supply</label>
-    <select #supply name="supply" id="supply" ngModel>
+    <select name="supply" id="supply" #supply="ngModel" required ngModel>
       <option value="true">In</option>
       <option value="false">Out</option>
     </select>
 
     <label for="storage">Storage</label>
-    <select name="storage" id="storage" ngModel>
+    <select name="storage" id="storage" #storage="ngModel" required ngModel>
       <option value="first">1</option>
       <option value="second">2</option>
       <option value="third">3</option>
     </select>
 
     <label for="products">Product</label>
-    <select name="products" id="products" ngModel>
+    <select name="products" id="products" #products="ngModel" required ngModel>
       <option *ngFor="let product of products$ | async" [value]="product | json">{{product.name}}</option>
     </select>
     <a routerLink="/create">New product</a>
 
-    <input type="number" placeholder="Weight" name="weight" ngModel>
+    <input type="number" placeholder="Weight" name="weight" #weight="ngModel" required ngModel>
 
 	  <ng-container *ngIf="supply.value !== 'false'; else elseSupply">
       <input type="number" placeholder="Waste (%)" name="waste" ngModel>
@@ -43,9 +43,10 @@
   </div>
 </form>
 
-<div *ngIf="form.invalid" class="error">
-
-</div>
+<app-info-block
+        [inputList]="[weight, supply, storage, products]"
+        [errorList]="['weight', 'supply', 'storage', 'products']"
+></app-info-block>
 
 <div *ngIf="connectError" class="error">
   <h2>Problem with connection! Try again!</h2>

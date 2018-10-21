@@ -1,33 +1,34 @@
 <form #form="ngForm" class="movement_form" (ngSubmit)="move(form)">
   <div class="main-form">
     <label for="storage">From storage</label>
-    <select name="storage" id="storage" ngModel>
+    <select name="storage" id="storage" #storage="ngModel" required  ngModel>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
     </select>
 
     <label for="storage-for">To storage</label>
-    <select name="storage-for" id="storage-for" ngModel>
+    <select name="storage-for" id="storage-for" #storagefor="ngModel" required ngModel>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
     </select>
 
     <label for="products">Product</label>
-    <select name="products" id="products" ngModel>
+    <select name="products" id="products" #products="ngModel" required  ngModel>
       <option *ngFor="let product of products$ | async" [value]="product.id">{{product.name}}</option>
     </select>
 
-    <input type="number" placeholder="Weight" name="weight" ngModel>
+    <input type="number" placeholder="Weight" name="weight" #weight="ngModel" required  ngModel>
 
     <button class="save" type="submit">Move</button>
   </div>
 </form>
 
-<div *ngIf="form.invalid" class="error">
-
-</div>
+<app-info-block
+        [inputList]="[storage, storagefor, products, weight]"
+        [errorList]="['storage', 'storage-for', 'products', 'weight']"
+></app-info-block>
 
 <div *ngIf="connectError" class="error">
   <h2>Problem with connection! Try again!</h2>

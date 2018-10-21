@@ -85,9 +85,8 @@ form {
     width: 340px;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin: 60px auto 0;
+    margin: 10px auto 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: 4s;
     backface-visibility: hidden;
 }
 

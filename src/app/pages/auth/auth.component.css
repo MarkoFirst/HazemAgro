@@ -26,7 +26,6 @@
     margin: 0 auto 20px;
     width: 50%;
     box-shadow: 0 5px 0 #616161;
-    transition: 0.4s;
 }
 
 .save:hover {

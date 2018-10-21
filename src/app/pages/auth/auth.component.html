@@ -3,8 +3,8 @@
     <div class="logo">
 				<img class="logo" src="/src/assets/images/icons/logo.png">
     </div>
-    <input class="login" type="text" placeholder="Login" name="login" required ngModel>
-    <input class="pas" type="password" placeholder="Password" name="password" required ngModel>
+    <input class="login" type="text" placeholder="Login" name="login" #login="ngModel" required ngModel>
+    <input class="pas" type="password" placeholder="Password" name="password" #psw="ngModel" required ngModel>
     <button class="save" type="submit">Enter</button>
     <p style="text-align: center;font-size: 13px;">Not registered?
       <a routerLink="/registration" class="green-text">SingUp</a>
@@ -12,7 +12,7 @@
   </div>
 </form>
 
-<div *ngIf="f.invalid" class="error">
-  <h2>Enter login</h2>
-  <h2>Enter password</h2>
-</div>
+<app-info-block
+        [inputList]="[login, psw]"
+        [errorList]="['login', 'password']"
+></app-info-block>

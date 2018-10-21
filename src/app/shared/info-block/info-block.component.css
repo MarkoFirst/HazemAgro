@@ -1,7 +1,14 @@
-.error, ul {
+.error, p {
     color: red;
+    margin: 0;
+    text-align: left;
 }
-ul {
+.error-block{
+    padding-bottom: 50px;
+    width: 340px;
+    margin: 0 auto;
+}
+p {
     font-size: 12px;
-    margin-left: 50%;
+    margin-bottom: 10px;
 }
