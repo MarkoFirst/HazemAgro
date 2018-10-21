@@ -35,5 +35,4 @@ export class CreateProductComponent {
 		}, 4000);
 		form.reset();
 	}
-
 }

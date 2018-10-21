@@ -16,6 +16,7 @@ export class StoreDataComponent implements OnInit {
 
 	storages$: Observable<IStorage[]>;
 	productList: IProduct[];
+	storageList: number = 0;
 
   constructor(public dbService: DataBaseService, public storeService: StoreService) { }
 
@@ -25,6 +26,7 @@ export class StoreDataComponent implements OnInit {
   }
 
 	objectKeys(obj) {
+		this.storageList = Object.keys(obj).length;
     return obj ? Object.keys(obj) : null;
   }
 
