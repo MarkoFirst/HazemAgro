@@ -3,15 +3,18 @@
 
 		<div class="stock_box">
 			<div class="container-1" (click)="showStorData($event, 1)">
+				<h1 class="container-1-h">2</h1>
 				<img class="container-1-img" src="/src/assets/images/gabariti40.jpg" [class.active-store]="idStore === 1">
 			</div>
 			<div class="container-2" (click)="showStorData($event, 2)">
+				<h1 class="container-2-h">3</h1>
 				<img class="container-2-img" src="/src/assets/images/gabariti2-40.jpg" [class.active-store]="idStore === 2">
 			</div>
 			<div id="dataBox">
 				<app-store-data [idStore]="idStore"></app-store-data>
 			</div>
 			<div class="container-3" (click)="showStorData($event, 0)">
+				<h1 class="container-3-h">1</h1>
 				<img class="container-3-img" src="/src/assets/images/gabariti2-40.jpg" [class.active-store]="idStore === 0">
 			</div>
 		</div>

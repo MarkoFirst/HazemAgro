@@ -9,7 +9,7 @@
     height: 50px;
     background-color: #9E9E9E;
     padding: 0 20px;
-    z-index: 2;
+    z-index: 3;
 }
 #header .tabs a{
     text-decoration: none;

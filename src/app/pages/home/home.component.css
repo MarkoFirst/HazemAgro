@@ -53,6 +53,13 @@
 .container-1-img, .container-2-img, .container-3-img{
     position: absolute;
     border-radius: 10px;
+    text-align: center;
+}
+.stock_box div h1{
+    z-index: 2;
+    margin: 0;
+    color: #FFFFFF;
+    font-weight: 700;
 }
 
 .active-store{
@@ -66,17 +73,32 @@
     left: 50%;
     margin-left: -150px;
 }
+.container-1-h{
+    top: 10%;
+    left: 48%;
+    position: absolute;
+}
 .container-2-img {
     height: 300px;
     width: 102px;
     top: 150px;
     left: 5%;
 }
+.container-2-h{
+    top: 55%;
+    left: 12%;
+    position: absolute;
+}
 .container-3-img {
     height: 300px;
     width: 102px;
     top: 150px;
     right: 5%;
+}
+.container-3-h{
+    top: 55%;
+    right: 12%;
+    position: absolute;
 }
 @media screen and (max-width: 800px) {
     .main_page{
@@ -92,7 +114,7 @@
     }
     .table_box{
         width: 70%;
-        margin-bottom: 80px;
+        margin-bottom: 120px;
     }
     footer{
         position: relative;

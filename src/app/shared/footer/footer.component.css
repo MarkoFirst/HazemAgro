@@ -2,12 +2,29 @@
     background-color: #454e6f;
     width: 100%;
     margin-top: 50px;
-    height: 50px;
+    height: auto;
     display: flex;
     justify-content: space-around;
-    align-items: center;
     position: absolute;
+    flex-direction: column;
+    align-items: center;
     bottom: 0;
+}
+.footer-row{
+    display: flex;
+    justify-content: space-between;
+}
+.footer-row:nth-child(1){
+    width: calc(30% + 200px);
+    margin: 20px auto;
+}
+.footer-row:nth-child(2){
+    width: 90%;
+    margin-bottom: 10px;
+}
+.footer-row a{
+    color: #FFFFFF;
+
 }
 .footer-text,.creators{
     display: inline-block;

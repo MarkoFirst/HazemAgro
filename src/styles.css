@@ -126,3 +126,8 @@ form {
     color: lightgray;
     box-shadow: 0 5px 0 lightgray;
 }
+@media screen and (max-width: 340px) {
+    form {
+        width: inherit;
+    }
+}
