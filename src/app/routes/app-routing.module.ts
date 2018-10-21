@@ -11,13 +11,13 @@ import {CreateProductComponent} from "../pages/create-product/create-product.com
 
 const routes: Routes = [
 	{
-		path: 'home',
+		path: '',
 		component: HomeComponent,
-		//canActivate: [CanActivateViaAuthGuard],
+		canActivate: [CanActivateViaAuthGuard],
 	},
 	{
-		path: '',
-		component: AuthComponent
+		path: 'auth',
+		component: AuthComponent,
 	},
 	{
 		path: 'registration',
@@ -25,19 +25,23 @@ const routes: Routes = [
 	},
 	{
 		path: 'table',
-		component: TableComponent
+		component: TableComponent,
+		canActivate: [CanActivateViaAuthGuard]
 	},
 	{
 		path: 'movement',
-		component: InternalMovementComponent
+		component: InternalMovementComponent,
+		canActivate: [CanActivateViaAuthGuard]
 	},
 	{
 		path: 'create',
-		component: CreateProductComponent
+		component: CreateProductComponent,
+		canActivate: [CanActivateViaAuthGuard]
 	},
 	{
 		path: 'delivery',
-		component: DeliveryComponent
+		component: DeliveryComponent,
+		canActivate: [CanActivateViaAuthGuard]
 	}
 ];
 

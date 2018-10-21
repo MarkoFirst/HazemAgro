@@ -12,7 +12,7 @@
     <input class="pas-admin" type="password" placeholder="Admin password" name="adminPassword" #adminPsw="ngModel"
            [class.validation]="adminPsw.touched" minlength="8" required ngModel>
     <button class="save" type="submit" [disabled]="f.invalid">Create</button>
-    <p style="text-align: center; font-size: 13px;">Have account? <a routerLink="/" class="green-text">SingIn</a></p>
+    <p style="text-align: center; font-size: 13px;">Have account? <a routerLink="/auth" class="green-text">SignIn</a></p>
   </div>
 </form>
 

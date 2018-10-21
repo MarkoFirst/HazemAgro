@@ -13,80 +13,75 @@ import {IMyUser} from "../../config/interfaces/IMyUser";
 
 @Injectable()
 export class AuthService implements OnDestroy {
-    user: Observable<User>;
-    @LocalStorage localLogined: boolean;
-    logined: BehaviorSubject<boolean> = new BehaviorSubject(this.localLogined);
+	user: Observable<User>;
+	@LocalStorage localLogined: boolean;
+	logined: BehaviorSubject<boolean> = new BehaviorSubject(this.localLogined);
 
-    private onDestroyStream$ = new Subject<void>();
+	private onDestroyStream$ = new Subject<void>();
 
-    constructor(private firebaseAuth: AngularFireAuth,
-                public  db: AngularFireDatabase,
-                private myDb: DataBaseService,
-                private storeService: StoreService,
-                private router: Router) {
-        this.user = firebaseAuth.authState;
-    }
+	constructor(private firebaseAuth: AngularFireAuth,
+	            public  db: AngularFireDatabase,
+	            private myDb: DataBaseService,
+	            private storeService: StoreService,
+	            private router: Router) {
+		this.user = firebaseAuth.authState;
+	}
 
-    signup(email: string, password: string, newLogin: string) {
-        this.firebaseAuth
-            .auth
-            .createUserWithEmailAndPassword(email, password)
-            .then(value => {
-                // Get a key for a new Post.
-                const newPostKey = this.myDb.getNewId('users');
-                const postData = {
-                    login: newLogin,
-                    id: newPostKey,
-                    password: password,
-                    mail: email
-                };
-                this.storeService.setUser({
-                    id: newPostKey,
-                    login: newLogin,
-                    mail: email,
-                    password: password,
-                });
-                this.logined.next(true);
-                this.localLogined = true;
-                const updates = {};
-                updates['/users/' + newPostKey] = postData;
-                this.router.navigateByUrl('/users');
-                return this.db.database.ref().update(updates);
-            })
-            .catch(err => {
-            });
-    }
+	signup(email: string, password: string) {
+		this.firebaseAuth
+			.auth
+			.createUserWithEmailAndPassword(email + '@hazem.com', password)
+			.then(value => {
+				// Get a key for a new Post.
+				const newPostKey = this.myDb.getNewId('users');
+				const postData = {
+					isAdmin: false,
+					name: email,
+					id: newPostKey,
+					password: password,
+				};
+				this.storeService.setUser(postData);
+				this.logined.next(true);
+				this.localLogined = true;
+				const updates = {};
+				updates['/users/' + newPostKey] = postData;
+				this.router.navigateByUrl('/');
+				return this.db.database.ref().update(updates);
+			})
+			.catch(err => {
+			});
+	}
 
-    login(email: string, password: string) {
-        this.firebaseAuth
-            .auth
-            .signInWithEmailAndPassword(email.toLowerCase(), password)
-            .then(value => {
-                this.myDb.selectDB('users', ref =>
-                    ref.orderByChild('mail')
-                        .equalTo(value.user.email))
-                    .pipe(takeUntil(this.onDestroyStream$))
-                    .subscribe((users: IMyUser[]) => {
-                        this.storeService.setUser(users[0]);
-                    });
-                this.logined.next(true);
-                this.localLogined = true;
-                this.router.navigateByUrl('/users');
-            })
-            .catch(err => {});
-    }
+	login(email: string, password: string) {
+		this.firebaseAuth
+			.auth
+			.signInWithEmailAndPassword(email.toLowerCase() + '@hazem.com', password)
+			.then(value => {
+				this.myDb.selectDB('users', ref =>
+					ref.orderByChild('name')
+						.equalTo(value.user.email))
+					.pipe(takeUntil(this.onDestroyStream$))
+					.subscribe((users: IMyUser[]) => {
+						this.storeService.setUser(users[0]);
+					});
+				this.logined.next(true);
+				this.localLogined = true;
+				this.router.navigateByUrl('/');
+			})
+			.catch(err => {
+			});
+	}
 
-    logout() {
-        this.logined.next(false);
-        this.localLogined = false;
-        this.firebaseAuth
-            .auth
-            .signOut();
-    }
+	logout() {
+		this.logined.next(false);
+		this.localLogined = false;
+		this.firebaseAuth
+			.auth
+			.signOut();
+	}
 
-    ngOnDestroy(): void {
-        this.onDestroyStream$.next();
-        this.onDestroyStream$.complete();
-    }
-
+	ngOnDestroy(): void {
+		this.onDestroyStream$.next();
+		this.onDestroyStream$.complete();
+	}
 }

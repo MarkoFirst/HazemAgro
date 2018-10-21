@@ -1,10 +1,10 @@
 <div id="header">
   <div class="tabs">
-    <a routerLink="/home"><div id="home" class="left-header-blocks"><i class="fas fa-home"></i><p>Home</p></div></a>
+    <a routerLink="/"><div id="home" class="left-header-blocks"><i class="fas fa-home"></i><p>Home</p></div></a>
     <a routerLink="/table"><div id="table" class="left-header-blocks"><i class="fas fa-table"></i><p>Table</p></div></a>
     <a routerLink="/delivery"><div id="delivery" class="left-header-blocks"><i class="fas fa-truck"></i><p>Delivery</p></div></a>
     <a routerLink="/movement"><div id="movement" class="left-header-blocks"><i class="fas fa-expand-arrows-alt"></i><p>Move</p></div></a>
-    <a routerLink="/"><div id="auth" class="left-header-blocks"><i class="fas fa-sign-out-alt"></i><p>Exit</p></div></a>
+    <a routerLink="/auth"><div id="exit" class="left-header-blocks" (click)="authService.logout()"><i class="fas fa-sign-out-alt"></i><p>Exit</p></div></a>
   </div>
   <div id="language">
     <img src="/src/assets/images/icons/russia_2.png" width="40" height="40"/>

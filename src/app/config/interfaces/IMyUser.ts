@@ -1,7 +1,6 @@
 export interface IMyUser {
     id: string;
-    login: string;
+    name: string;
     password: string;
-    mail: string;
-    isAdmin?: boolean;
+    isAdmin: boolean;
 }
