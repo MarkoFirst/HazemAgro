@@ -1,3 +1,7 @@
-.error {
+.error, ul {
     color: red;
+}
+ul {
+    font-size: 12px;
+    margin-left: 50%;
 }

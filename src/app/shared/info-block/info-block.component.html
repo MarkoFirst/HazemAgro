@@ -1,3 +1,8 @@
-  <ng-container *ngFor="let case of inputList; let index = index">
-    <h3 *ngIf="case.invalid && (case.dirty || case.touched)" class="error">{{errorList[index]}}</h3>
-  </ng-container>
+<ng-container *ngFor="let case of inputList; let index = index">
+	<ng-container *ngIf="case.invalid && (case.dirty || case.touched)">
+		<h3 class="error">Enter correct {{errorList[index]}}</h3>
+		<ul *ngFor="let error of myErrorList">
+			<li *ngIf="case.getError(error.type)">{{error.text}}</li>
+		</ul>
+	</ng-container>
+</ng-container>

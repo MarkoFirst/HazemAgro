@@ -11,5 +11,10 @@ export class InfoBlockComponent {
   @Input() inputList: NgControl[];
 	@Input() errorList: string[];
 
+	myErrorList = [
+		{type: 'required', text: 'must be filled'},
+		{type: 'max' , text: 'max of characters'}
+	];
+
   constructor() { }
 }
