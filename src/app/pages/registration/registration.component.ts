@@ -14,9 +14,7 @@ export class RegistrationComponent implements OnInit {
   }
 
 	onSubmit(f: NgForm) {
-  	if (f.invalid) {
-  		return;
-	  }
+  	if (f.invalid) return;
 		console.log(f.value);
 	}
 }

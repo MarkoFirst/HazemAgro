@@ -20,6 +20,8 @@ export class DeliveryComponent implements OnInit {
   }
 
   addDelivery(form) {
+	  if (form.invalid) return;
+
 	  this.dbService.addNewDelivery({
 		  date: Date.now().toString(),
 		  idProduct: JSON.parse(form.value.products).id,

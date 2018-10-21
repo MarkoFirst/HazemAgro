@@ -13,6 +13,8 @@ export class AuthComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
+	  if (f.invalid) return;
+
+	  console.log(f.value);
   }
 }

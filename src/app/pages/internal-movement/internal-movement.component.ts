@@ -21,6 +21,7 @@ export class InternalMovementComponent implements OnInit {
   }
 
   move(form) {
+	  if (form.invalid) return;
 
   }
 

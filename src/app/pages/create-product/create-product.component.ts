@@ -17,6 +17,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   create(form) {
+	  if (form.invalid) return;
 
   }
 
