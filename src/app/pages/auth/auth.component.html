@@ -5,7 +5,7 @@
     </div>
     <input class="login" type="text" placeholder="Login" name="login" #login="ngModel" required ngModel>
     <input class="pas" type="password" placeholder="Password" name="password" #psw="ngModel" required ngModel>
-    <button class="save" type="submit">Enter</button>
+    <button class="save" type="submit" [disabled]="f.invalid">Enter</button>
     <p style="text-align: center;font-size: 13px;">Not registered?
       <a routerLink="/registration" class="green-text">SingUp</a>
     </p>

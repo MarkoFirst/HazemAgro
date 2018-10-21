@@ -4,19 +4,19 @@
       <img class="logo" src="/src/assets/images/icons/logo.png"/>
     </div>
     <input class="login" type="text" placeholder="Login" name="login" #login="ngModel"
-           minlength="4" required ngModel>
+           [class.validation]="login.touched" minlength="4" required ngModel>
     <input class="pas" type="password" placeholder="Password" name="password" #psw="ngModel"
-           minlength="8" required ngModel>
+           [class.validation]="psw.touched" minlength="8" required ngModel>
     <input class="pas-2" type="password" placeholder="Repeat password" name="repeatPassword" #rptPsw="ngModel"
-           minlength="8" required ngModel>
+           [class.validation]="rptPsw.touched" minlength="8" required ngModel>
     <input class="pas-admin" type="password" placeholder="Admin password" name="adminPassword" #adminPsw="ngModel"
-           minlength="8" required ngModel>
-    <button class="save" type="submit">Create</button>
+           [class.validation]="adminPsw.touched" minlength="8" required ngModel>
+    <button class="save" type="submit" [disabled]="f.invalid">Create</button>
     <p style="text-align: center; font-size: 13px;">Have account? <a routerLink="/" class="green-text">SingIn</a></p>
   </div>
 </form>
 
 <app-info-block
-    [inputList]="[login, psw, rptPsw, adminPsw]"
+    [inputList]="[login, psw, checkRptPsw(psw, rptPsw), adminPsw]"
     [errorList]="['login', 'password', 'second password', 'admin password']"
 ></app-info-block>

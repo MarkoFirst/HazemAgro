@@ -1,8 +1,8 @@
 <form #form="ngForm" (ngSubmit)="create(form)">
   <div class="main-form">
-    <input type="text" placeholder="Name" name="name" #name="ngModel" required ngModel>
+    <input [class.validation]="name.touched" type="text" placeholder="Name" name="name" #name="ngModel" required ngModel>
 
-    <button class="save" type="submit">Add</button>
+    <button class="save" type="submit" [disabled]="form.invalid">Add</button>
   </div>
 </form>
 

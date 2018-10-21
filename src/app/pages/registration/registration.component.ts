@@ -17,4 +17,18 @@ export class RegistrationComponent implements OnInit {
   	if (f.invalid) return;
 		console.log(f.value);
 	}
+
+	checkRptPsw(psw, rptPsw) {
+		if (psw.value === rptPsw.value || (!rptPsw.touched && !rptPsw.dirty)) return rptPsw;
+
+		return {
+			invalid: true,
+			dirty: true,
+			touched: true,
+			errors: {
+				...rptPsw.errors,
+				'repeat': true,
+			}
+		};
+	}
 }

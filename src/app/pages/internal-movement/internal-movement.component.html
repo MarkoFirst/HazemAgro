@@ -19,9 +19,9 @@
       <option *ngFor="let product of products$ | async" [value]="product.id">{{product.name}}</option>
     </select>
 
-    <input type="number" placeholder="Weight" name="weight" #weight="ngModel" required  ngModel>
+    <input [class.validation]="weight.touched" type="number" placeholder="Weight" name="weight" #weight="ngModel" required  ngModel>
 
-    <button class="save" type="submit">Move</button>
+    <button class="save" type="submit" [disabled]="form.invalid">Move</button>
   </div>
 </form>
 

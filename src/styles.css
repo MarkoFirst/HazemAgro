@@ -59,6 +59,10 @@ input {
     outline: none;
 }
 
+.validation:not(:focus):invalid {
+    box-shadow: 0 3px 0 0 red;
+}
+
 button {
     outline: none;
 }
@@ -97,4 +101,28 @@ form {
 .done, .error {
     width: 100%;
     text-align: center;
+}
+
+.save {
+    display: block;
+    font-size: 18px;
+    padding: 6px 15px;
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 auto 20px;
+    width: 50%;
+    box-shadow: 0 5px 0 #616161;
+}
+
+.save:hover {
+    background-color: #000000;
+    color: #FFFFFF
+}
+
+.save:disabled {
+    color: lightgray;
+    box-shadow: 0 5px 0 lightgray;
 }

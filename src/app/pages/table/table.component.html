@@ -12,7 +12,7 @@
     <tr *ngFor="let delivery of (deliveries$ | async)?.slice().reverse() | slice:0:10">
       <td>{{delivery.date | date: 'dd.MM.yy / HH:mm'}}</td>
       <td>{{findProductName(delivery.idProduct)}}</td>
-      <td class="delivery_provider">{{delivery.provider}}</td>
+      <td class="delivery_provider">{{delivery.provider || '___'}}</td>
       <td>{{delivery.weight}}</td>
       <td>
         <ng-container *ngIf="delivery.isSupply; else oneFraction">

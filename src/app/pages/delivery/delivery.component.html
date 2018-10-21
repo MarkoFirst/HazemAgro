@@ -19,12 +19,12 @@
     </select>
     <a routerLink="/create">New product</a>
 
-    <input type="number" placeholder="Weight" name="weight" #weight="ngModel" required ngModel>
+    <input [class.validation]="weight.touched" type="number" placeholder="Weight" name="weight" #weight="ngModel" required ngModel>
 
 	  <ng-container *ngIf="supply.value !== 'false'; else elseSupply">
-      <input type="number" placeholder="Waste (%)" name="waste" ngModel>
-      <input type="number" placeholder="Big (%)" name="big" ngModel>
-      <input type="number" placeholder="Small (%)" name="small" ngModel>
+      <input [class.validation]="waste.touched" #waste="ngModel" type="number" placeholder="Waste (%)" name="waste" ngModel required>
+      <input [class.validation]="big.touched" #big="ngModel" type="number" placeholder="Big (%)" name="big" ngModel required>
+      <input [class.validation]="small.touched" #small="ngModel" type="number" placeholder="Small (%)" name="small" ngModel required>
 	  </ng-container>
 
 	  <ng-template #elseSupply>
@@ -39,7 +39,7 @@
 
     <input type="text" placeholder="Provider" name="provider" ngModel>
 
-    <button class="save" type="submit">Add</button>
+    <button class="save" type="submit" [disabled]="form.invalid">Add</button>
   </div>
 </form>
 

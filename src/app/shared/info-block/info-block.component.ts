@@ -13,7 +13,8 @@ export class InfoBlockComponent {
 
 	myErrorList = [
 		{type: 'required', text: 'must be filled'},
-		{type: 'max' , text: 'max of characters'}
+		{type: 'minlength' , text: 'need more characters'},
+		{type: 'repeat', text: 'must be repeat'}
 	];
 
   constructor() { }

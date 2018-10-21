@@ -35,6 +35,7 @@
 }
 .table_box table{
     border-radius: 5px;
+    background: #ECE9E0;
 }
 .table_box table caption {
     padding: 10px;
