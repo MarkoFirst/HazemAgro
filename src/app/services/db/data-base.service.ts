@@ -49,7 +49,7 @@ export class DataBaseService {
 				const product = {};
 
 				if (newDelivery.isSupply) {
-					product[`/product/${newDelivery.idProduct}/waste`] = (productDelivery.waste || 0)+ newDelivery.weight * (newDelivery.waste / 100);
+					product[`/product/${newDelivery.idProduct}/waste`] = (productDelivery.waste || 0) + newDelivery.weight * (newDelivery.waste / 100);
 					product[`/product/${newDelivery.idProduct}/standard`] = (productDelivery.standard || 0) + newDelivery.weight * (newDelivery.standard / 100);
 					product[`/product/${newDelivery.idProduct}/big`] = (productDelivery.big || 0) + newDelivery.weight * (newDelivery.big / 100);
 					product[`/product/${newDelivery.idProduct}/small`] = (productDelivery.small || 0) + newDelivery.weight * (newDelivery.small / 100);

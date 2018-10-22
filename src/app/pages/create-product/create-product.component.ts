@@ -18,7 +18,7 @@ export class CreateProductComponent {
 		if (form.invalid) return;
 		const newPostKey = this.dbService.getNewId('product');
 
-		const postData: IProduct = {
+		const postData = {
 			id: newPostKey,
 			name: form.value.name
 		};
@@ -27,12 +27,13 @@ export class CreateProductComponent {
 		updates['/product/' + newPostKey] = postData;
 		this.dbService.updateDB(updates)
 			.then(() => this.connectDone = true)
-			.catch(() => this.connectError = true)
-		;
+			.catch(() => this.connectError = true);
+
 		setTimeout(() => {
 			this.connectDone = false;
 			this.connectError = false;
 		}, 4000);
+
 		form.reset();
 	}
 }

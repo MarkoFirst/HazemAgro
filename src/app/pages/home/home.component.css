@@ -38,7 +38,7 @@
     background: #ECE9E0;
 }
 .table_box table caption {
-    padding: 10px;
+    padding: 0 10px 10px;
     font-weight: 500;
 }
 .table_box table tbody tr th {

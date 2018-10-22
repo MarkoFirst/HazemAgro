@@ -16,6 +16,8 @@ p {
 span {
     margin-left: 4px;
     display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 h2 {
@@ -25,12 +27,20 @@ h2 {
 
 @media screen and (max-width: 500px) {
     #data {
-        width: calc(50% - 20px);
+        width: calc(50%);
         height: 195px;
         font-size: 14px;
+        padding: 5px;
     }
 
     span {
-        margin-left: 0;
+        margin-left: 2px;
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    #data {
+        width: calc(50% - 30px);
     }
 }

@@ -9,15 +9,23 @@
     </select>
 
     <label for="storage-for">To storage</label>
-    <select [class.validation]="storagefor.touched" name="storage-for" id="storage-for" #storagefor="ngModel" required ngModel>
+    <select [class.validation]="storagefor.touched" name="storageFor" id="storage-for" #storagefor="ngModel" required ngModel>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
     </select>
 
-    <label for="products">Product</label>
-    <select [class.validation]="products.touched" name="products" id="products" #products="ngModel" required  ngModel>
+    <label for="product">Product</label>
+    <select [class.validation]="product.touched" name="product" id="product" #product="ngModel" required  ngModel>
       <option *ngFor="let product of products$ | async" [value]="product.id">{{product.name}}</option>
+    </select>
+
+    <label for="fraction">Fraction</label>
+    <select [class.validation]="fraction.touched" name="fraction" id="fraction" #fraction="ngModel" required  ngModel>
+      <option value="big">big</option>
+      <option value="small">small</option>
+      <option value="standard">standard</option>
+      <option value="waste">waste</option>
     </select>
 
     <input [class.validation]="weight.touched" type="number" placeholder="Weight" name="weight" #weight="ngModel" required  ngModel>
@@ -27,7 +35,7 @@
 </form>
 
 <app-info-block
-        [inputList]="[storage, storagefor, products, weight]"
+        [inputList]="[storage, storagefor, product, weight]"
         [errorList]="['storage', 'storage-for', 'products', 'weight']"
 ></app-info-block>
 

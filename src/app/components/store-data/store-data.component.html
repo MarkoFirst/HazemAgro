@@ -5,7 +5,7 @@
 			<h2>Storage {{idStore+1}}</h2>
 			<p *ngFor="let key of objectKeys(store.filling)">
 				<ng-container
-						*ngIf="store.filling[key].big || store.filling[key].small || store.filling[key].standard || store.filling[key].waste; else empty">
+						*ngIf="store.filling[key].big || store.filling[key].small || store.filling[key].standard || store.filling[key].waste">
 					{{getProductName(key)}}:
 					<br>
 					<span>{{store.filling[key].big}}/</span>
@@ -13,22 +13,22 @@
 					<span>{{store.filling[key].standard}}/</span>
 					<span>{{store.filling[key].waste}}</span>
 				</ng-container>
-				<ng-template #empty>Empty!</ng-template>
 			</p>
 		</ng-container>
 	</div>
 	<ng-container *ngIf="idStore === 4">
 		<div>
 			<h2>All storage</h2>
-			<p *ngFor="let product of productList">
-				{{product.name}}:
-				<br>
-				<span>{{product.big}} / </span>
-				<span>{{product.small}} / </span>
-				<span>{{product.standard}} / </span>
-				<span>{{product.waste}}</span>
-			</p>
-
+			<ng-container *ngFor="let product of productList">
+				<p *ngIf="product.big || product.small || product.standard || product.waste">
+					{{product.name}}:
+					<br>
+					<span>{{product.big || 0}} / </span>
+					<span>{{product.small || 0}} / </span>
+					<span>{{product.standard || 0}} / </span>
+					<span>{{product.waste || 0}}</span>
+				</p>
+			</ng-container>
 		</div>
 	</ng-container>
 </div>
