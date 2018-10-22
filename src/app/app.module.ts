@@ -8,6 +8,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import {AppComponent} from './app.component';
 import {HomeComponent} from "./pages/home/home.component";
@@ -58,6 +59,7 @@ export const firebaseConfig = {
 		AngularFirestoreModule,
 		AngularFireDatabaseModule,
 		AngularFireStorageModule,
+        NgxPaginationModule,
 	],
 	providers: [AuthService, CanActivateViaAuthGuard, DataBaseService, StoreService],
 	bootstrap: [AppComponent]
