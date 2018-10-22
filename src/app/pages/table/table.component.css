@@ -35,6 +35,11 @@ span {
 .table_box{
     padding-bottom:  120px;
 }
+.pagination{
+    text-align: center;
+    margin-left: -40px;
+}
+
 .table_box table tbody tr:nth-child(1) {
     background: #666;
     color: #FFFFFF;
@@ -50,6 +55,10 @@ span {
     }
     #weight:before{
         content: 'W';
+    }
+    table{
+        width: auto;
+        table-layout: fixed;
     }
     td {
         font-size: 14px;
