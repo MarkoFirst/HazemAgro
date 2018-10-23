@@ -2,7 +2,7 @@
 <form #form="ngForm" class="movement_form" (ngSubmit)="move(form)">
   <div class="main-form">
     <label for="storage">From storage</label>
-    <select [class.validation]="storage.touched" name="storage" id="storage" #storage="ngModel" required  ngModel>
+    <select [class.validation]="storage.touched" name="storage" id="storage" #storage="ngModel" required  ngModel [(ngModel)]="storageNow">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -10,14 +10,14 @@
 
     <label for="storage-for">To storage</label>
     <select [class.validation]="storagefor.touched" name="storageFor" id="storage-for" #storagefor="ngModel" required ngModel>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option *ngIf="storage.value !== '1'" value="1">1</option>
+      <option *ngIf="storage.value !== '2'" value="2">2</option>
+      <option *ngIf="storage.value !== '3'" value="3">3</option>
     </select>
 
     <label for="product">Product</label>
     <select [class.validation]="product.touched" name="product" id="product" #product="ngModel" required  ngModel>
-      <option *ngFor="let product of products$ | async" [value]="product.id">{{product.name}}</option>
+      <option *ngFor="let product of (getProducts(storage.value) | async)" [value]="product.id">{{product.name}}</option>
     </select>
 
     <label for="fraction">Fraction</label>

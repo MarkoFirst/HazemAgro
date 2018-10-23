@@ -1,5 +1,5 @@
 <div id="data" (click)="$event.stopPropagation()"
-     [style.overflow-y]="storageList > 3 || (productList.length > 3 && idStore === 4) ? 'scroll' : null">
+     [style.overflow-y]="storageList > 3 || (productList && productList.length > 3 && idStore === 4) ? 'scroll' : null">
 	<div *ngFor="let store of storages$ | async; let item = index">
 		<ng-container *ngIf="item === idStore">
 			<h2>Storage {{idStore+1}}</h2>

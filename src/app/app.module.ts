@@ -15,15 +15,15 @@ import {HomeComponent} from "./pages/home/home.component";
 import {AuthComponent} from "./pages/auth/auth.component";
 import {HeaderComponent} from "./shared/header/header.component";
 import {FooterComponent} from "./shared/footer/footer.component";
-import { RegistrationComponent } from './pages/registration/registration.component';
-import { TableComponent } from './pages/table/table.component';
-import { DeliveryComponent } from './pages/delivery/delivery.component';
+import {RegistrationComponent} from './pages/registration/registration.component';
+import {TableComponent} from './pages/table/table.component';
+import {DeliveryComponent} from './pages/delivery/delivery.component';
 import {DataBaseService} from "./services/db/data-base.service";
 import {FormsModule} from "@angular/forms";
-import { CreateProductComponent } from './pages/create-product/create-product.component';
-import { InternalMovementComponent } from './pages/internal-movement/internal-movement.component';
-import { StoreDataComponent } from './components/store-data/store-data.component';
-import { InfoBlockComponent } from './shared/info-block/info-block.component';
+import {CreateProductComponent} from './pages/create-product/create-product.component';
+import {InternalMovementComponent} from './pages/internal-movement/internal-movement.component';
+import {StoreDataComponent} from './components/store-data/store-data.component';
+import {InfoBlockComponent} from './shared/info-block/info-block.component';
 import {StoreService} from "./services/store/store.service";
 
 export const firebaseConfig = {
@@ -59,9 +59,10 @@ export const firebaseConfig = {
 		AngularFirestoreModule,
 		AngularFireDatabaseModule,
 		AngularFireStorageModule,
-        NgxPaginationModule,
+		NgxPaginationModule,
 	],
 	providers: [AuthService, CanActivateViaAuthGuard, DataBaseService, StoreService],
 	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

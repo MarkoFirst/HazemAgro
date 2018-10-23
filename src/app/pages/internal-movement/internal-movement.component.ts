@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {IProduct} from "../../config/interfaces/IProduct";
 import {DataBaseService} from "../../services/db/data-base.service";
 import {Observable} from "rxjs";
+import "rxjs-compat/add/operator/map";
+import {IProduct} from "../../config/interfaces/IProduct";
+import {LocalStorage} from "../../decorators/local-storage.decorator";
 
 @Component({
 	selector: 'app-internal-movement',
@@ -10,16 +12,35 @@ import {Observable} from "rxjs";
 })
 export class InternalMovementComponent implements OnInit {
 
-	products$: Observable<IProduct[]>;
+	@LocalStorage productListInApp: IProduct[];
+
+	productsFirstStore$: Observable<IProduct[]>;
+	productsSecondStore$: Observable<IProduct[]>;
+	productsThirdStore$: Observable<IProduct[]>;
 	connectError: boolean = false;
 	connectDone: boolean = false;
 	formValue: any;
+	storageNow: any;
 
 	constructor(public dbService: DataBaseService) {
 	}
 
 	ngOnInit() {
-		this.products$ = this.dbService.selectDB<IProduct>('product');
+		this.productsFirstStore$ = this.dbService
+			.selectDB(`storage/first`)
+			.map(value => Object.keys(value[0]).map(key => {
+				return this.productListInApp.find(item => item.id === key);
+			}));
+		this.productsSecondStore$ = this.dbService
+			.selectDB(`storage/second`)
+			.map(value => Object.keys(value[0]).map(key => {
+				return this.productListInApp.find(item => item.id === key);
+			}));
+		this.productsThirdStore$ = this.dbService
+			.selectDB(`storage/third`)
+			.map(value => Object.keys(value[0]).map(key => {
+				return this.productListInApp.find(item => item.id === key);
+			}));
 	}
 
 	move(form) {
@@ -28,25 +49,25 @@ export class InternalMovementComponent implements OnInit {
 		this.formValue = form.value;
 
 		this.dbService.selectDB(
-			`storage/${InternalMovementComponent.getStorageName(this.formValue.storage)}/filling/${this.formValue.product}`
+			`storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product}`
 		).first()
 			.subscribe((data: number[]) => {
 				const product = {};
 
-				console.log(this.formValue);
+				if (data[this.getFractionIndex(this.formValue.fraction)] < this.formValue.weight) return alert('There is no such quantity in stock!');
 
-				product[`/storage/${InternalMovementComponent.getStorageName(this.formValue.storage)}/filling/${this.formValue.product}/${this.formValue.fraction}`] =
-					data[InternalMovementComponent.getFractionIndex(this.formValue.fraction)] - this.formValue.weight;
+				product[`/storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product}/${this.formValue.fraction}`] =
+					data[this.getFractionIndex(this.formValue.fraction)] - this.formValue.weight;
 
 				return this.dbService.updateDB(product).then(() => {
 					this.dbService.selectDB(
-						`storage/${InternalMovementComponent.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product}`
+						`storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product}`
 					).first()
 						.subscribe((data: number[]) => {
 							const productTo = {};
 
-							productTo[`/storage/${InternalMovementComponent.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product}/${this.formValue.fraction}`] =
-								data[InternalMovementComponent.getFractionIndex(this.formValue.fraction)] + this.formValue.weight;
+							productTo[`/storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product}/${this.formValue.fraction}`] =
+								data[this.getFractionIndex(this.formValue.fraction)] + this.formValue.weight;
 
 							return this.dbService.updateDB(productTo).then(() => {
 							});
@@ -62,7 +83,20 @@ export class InternalMovementComponent implements OnInit {
 		form.reset();
 	}
 
-	static getStorageName(num) {
+	getProducts(num) {
+		switch (num) {
+			case '1':
+				return this.productsFirstStore$;
+			case '2':
+				return this.productsSecondStore$;
+			case '3':
+				return this.productsThirdStore$;
+			default:
+				return this.productsFirstStore$;
+		}
+	}
+
+	getStorageName(num) {
 		switch (num) {
 			case '1':
 				return 'first';
@@ -73,7 +107,7 @@ export class InternalMovementComponent implements OnInit {
 		}
 	}
 
-	static getFractionIndex(fraction) {
+	getFractionIndex(fraction) {
 		switch (fraction) {
 			case 'big':
 				return 0;

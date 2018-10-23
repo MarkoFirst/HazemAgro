@@ -10,7 +10,8 @@ import {EFraction} from "../../config/enums/EFraction";
 @Injectable()
 export class DataBaseService {
 
-	constructor(private angularDataBase: AngularFireDatabase) {}
+	constructor(private angularDataBase: AngularFireDatabase) {
+	}
 
 	selectDB<T>(from: string, callback: QueryFn = ref => ref): Observable<T[]> {
 		const list: AngularFireList<T> = this.angularDataBase.list(from, callback);
@@ -33,31 +34,34 @@ export class DataBaseService {
 				const store = {};
 
 				if (newDelivery.isSupply) {
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/big`] = (data[EFraction.big] || 0) + newDelivery.weight * (newDelivery.big / 100);
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/small`] = (data[EFraction.small] || 0) + newDelivery.weight * (newDelivery.small / 100);
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/standard`] = (data[EFraction.standard] || 0) + newDelivery.weight * (newDelivery.standard / 100);
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/waste`] = (data[EFraction.waste] || 0) + newDelivery.weight * (newDelivery.waste / 100);
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/big`] = Math.round(((data[EFraction.big] || 0) + newDelivery.weight * (newDelivery.big / 100)) * 100) / 100;
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/small`] = Math.round(((data[EFraction.small] || 0) + newDelivery.weight * (newDelivery.small / 100)) * 100) / 100;
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/standard`] = Math.round(((data[EFraction.standard] || 0) + newDelivery.weight * (newDelivery.standard / 100)) * 100) / 100;
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/waste`] = Math.round(((data[EFraction.waste] || 0) + newDelivery.weight * (newDelivery.waste / 100)) * 100) / 100;
 				} else {
+
+					if (data[EFraction[newDelivery.fraction]] < newDelivery.weight) return alert('There is no such quantity in stock!');
+
 					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/${newDelivery.fraction}`] = data[EFraction[newDelivery.fraction]] - newDelivery.weight;
 				}
 
-				return this.updateDB(store);
-			});
+				return this.updateDB(store).then(() => {
+					this.insertDB<IDelivery>(`/delivery/`, newDelivery)
+						.then(() => {
+							const product = {};
 
-		return this.insertDB<IDelivery>(`/delivery/`, newDelivery)
-			.then(() => {
-				const product = {};
+							if (newDelivery.isSupply) {
+								product[`/product/${newDelivery.idProduct}/waste`] = Math.round(((productDelivery.waste || 0) + newDelivery.weight * (newDelivery.waste / 100)) * 100) / 100;
+								product[`/product/${newDelivery.idProduct}/standard`] = Math.round(((productDelivery.standard || 0) + newDelivery.weight * (newDelivery.standard / 100)) * 100) / 100;
+								product[`/product/${newDelivery.idProduct}/big`] = Math.round(((productDelivery.big || 0) + newDelivery.weight * (newDelivery.big / 100)) * 100) / 100;
+								product[`/product/${newDelivery.idProduct}/small`] = Math.round(((productDelivery.small || 0) + newDelivery.weight * (newDelivery.small / 100)) * 100) / 100;
+							} else {
+								product[`/product/${newDelivery.idProduct}/${newDelivery.fraction}`] = productDelivery[newDelivery.fraction] - newDelivery.weight;
+							}
 
-				if (newDelivery.isSupply) {
-					product[`/product/${newDelivery.idProduct}/waste`] = (productDelivery.waste || 0) + newDelivery.weight * (newDelivery.waste / 100);
-					product[`/product/${newDelivery.idProduct}/standard`] = (productDelivery.standard || 0) + newDelivery.weight * (newDelivery.standard / 100);
-					product[`/product/${newDelivery.idProduct}/big`] = (productDelivery.big || 0) + newDelivery.weight * (newDelivery.big / 100);
-					product[`/product/${newDelivery.idProduct}/small`] = (productDelivery.small || 0) + newDelivery.weight * (newDelivery.small / 100);
-				} else {
-					product[`/product/${newDelivery.idProduct}/${newDelivery.fraction}`] = productDelivery[newDelivery.fraction] - newDelivery.weight;
-				}
-
-				return this.updateDB(product);
+							return this.updateDB(product);
+						});
+				})
 			});
 	}
 
