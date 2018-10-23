@@ -21,12 +21,12 @@
 
 		<div class="table_box">
 			<table border="1">
-				<caption>Last deliveries</caption>
+				<caption>{{'home.last' | translate}}</caption>
 				<tr>
-					<th>Date</th>
-					<th>Product</th>
-					<th>Weight</th>
-					<th>Route</th>
+					<th>{{'table.date' | translate}}</th>
+					<th>{{'shared.product' | translate}}</th>
+					<th>{{'shared.weight' | translate}}</th>
+					<th>{{'table.shortSupply' | translate}}</th>
 				</tr>
 				<tr *ngFor="let delivery of (deliveries$ | async)?.slice().reverse() | slice:0:10">
 					<th>{{delivery.date | date: 'dd.MM.yy / HH:mm'}}</th>

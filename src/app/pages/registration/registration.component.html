@@ -3,20 +3,25 @@
     <div class="logo">
       <img class="logo" src="/src/assets/images/icons/logo.png"/>
     </div>
-    <input class="login" type="text" placeholder="Login" name="login" #login="ngModel"
+    <input class="login" type="text" placeholder="{{'shared.login' | translate}}" name="login" #login="ngModel"
            [class.validation]="login.touched" minlength="4" required ngModel>
-    <input class="pas" type="password" placeholder="Password" name="password" #psw="ngModel"
+    <input class="pas" type="password" placeholder="{{'shared.password' | translate}}" name="password" #psw="ngModel"
            [class.validation]="psw.touched" minlength="8" required ngModel>
-    <input class="pas-2" type="password" placeholder="Repeat password" name="repeatPassword" #rptPsw="ngModel"
+    <input class="pas-2" type="password" placeholder="{{'registration.secondPassword' | translate}}" name="repeatPassword" #rptPsw="ngModel"
            [class.validation]="rptPsw.touched" minlength="8" required ngModel>
-    <input class="pas-admin" type="password" placeholder="Admin password" name="adminPassword" #adminPsw="ngModel"
+    <input class="pas-admin" type="password" placeholder="{{'registration.adminPassword' | translate}}" name="adminPassword" #adminPsw="ngModel"
            [class.validation]="adminPsw.touched" minlength="8" required ngModel>
-    <button class="save" type="submit" [disabled]="f.invalid">Create</button>
-    <p style="text-align: center; font-size: 13px;">Have account? <a routerLink="/auth" class="green-text">SignIn</a></p>
+    <button class="save" type="submit" [disabled]="f.invalid">{{'registration.create' | translate}}</button>
+    <p style="text-align: center; font-size: 13px;">{{'registration.haveAccount' | translate}} <a routerLink="/auth" class="green-text">{{'shared.enter' | translate}}</a></p>
   </div>
 </form>
 
 <app-info-block
     [inputList]="[login, psw, checkRptPsw(psw, rptPsw), adminPsw]"
-    [errorList]="['login', 'password', 'second password', 'admin password']"
+    [errorList]="[
+      'shared.login' | translate | lowercase,
+      'shared.password' | translate | lowercase,
+      ('shared.password' | translate | lowercase) + ' 2',
+      'registration.adminPassword' | translate | lowercase
+    ]"
 ></app-info-block>

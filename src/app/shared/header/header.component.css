@@ -19,6 +19,7 @@
     width: 20px;
     height: 20px;
     margin: 5px;
+    cursor: pointer;
 }
 #language > div {
     display: inline-block;
@@ -31,7 +32,9 @@
     justify-content: flex-start;
 }
 .left-header-blocks {
-    width: 100px;
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: bisque;
     text-align: center;
     font-size: 22px;
@@ -62,6 +65,7 @@
 
     .left-header-blocks {
         width: 34px;
+        padding: 0;
         height: 33px;
         display: flex;
         justify-content: center;

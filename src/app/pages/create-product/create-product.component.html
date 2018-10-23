@@ -1,22 +1,22 @@
-<h1 style="text-align: center">New product</h1>
+<h1 style="text-align: center">{{'createProduct.newProduct' | translate}}</h1>
 <form #form="ngForm" (ngSubmit)="create(form)">
   <div class="main-form">
-    <input [class.validation]="name.touched" type="text" placeholder="Name" name="name" #name="ngModel" ngModel
+    <input [class.validation]="name.touched" type="text" placeholder="{{'shared.name' | translate}}" name="name" #name="ngModel" ngModel
            required minlength="4">
 
-    <button class="save" type="submit" [disabled]="form.invalid">Add</button>
+    <button class="save" type="submit" [disabled]="form.invalid">{{'shared.add' | translate}}</button>
   </div>
 </form>
 
 <app-info-block
         [inputList]="[name]"
-        [errorList]="['name']"
+        [errorList]="['shared.name' | translate | lowercase]"
 ></app-info-block>
 
 <div *ngIf="connectError" class="error">
-  <h2>Problem with connection! Try again!</h2>
+  <h2>{{'shared.connectError' | translate}}</h2>
 </div>
 
 <div *ngIf="connectDone" class="done">
-  <h2>Create done!</h2>
+  <h2>{{'shared.connectDone' | translate}}</h2>
 </div>

@@ -24,7 +24,6 @@
 }
 .footer-row a{
     color: #FFFFFF;
-
 }
 .footer-text,.creators{
     display: inline-block;
@@ -32,4 +31,10 @@
     margin: 0;
 }
 @media(max-width:414px) {
+    a {
+        font-size: 12px;
+    }
+    .footer-row:nth-child(1){
+        width: 90%;
+    }
 }

@@ -25,6 +25,9 @@ import {InternalMovementComponent} from './pages/internal-movement/internal-move
 import {StoreDataComponent} from './components/store-data/store-data.component';
 import {InfoBlockComponent} from './shared/info-block/info-block.component';
 import {StoreService} from "./services/store/store.service";
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyDi41jC_ngyXBuHU4EL9kRra9T2lMo_lOI',
@@ -60,9 +63,21 @@ export const firebaseConfig = {
 		AngularFireDatabaseModule,
 		AngularFireStorageModule,
 		NgxPaginationModule,
+		HttpClientModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient]
+			}
+		}),
 	],
 	providers: [AuthService, CanActivateViaAuthGuard, DataBaseService, StoreService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+export function HttpLoaderFactory(http: HttpClient) {
+	return new TranslateHttpLoader(http);
 }

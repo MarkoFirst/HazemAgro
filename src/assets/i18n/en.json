@@ -1,0 +1,74 @@
+{
+  "header": {
+    "home": "Home",
+    "table": "Table",
+    "delivery": "Delivery",
+    "move": "Move",
+    "exit": "Exit"
+  },
+  "info": {
+    "enterCorrect": "Enter correct ",
+    "required": "must be filled",
+    "minlength": "need more characters",
+    "repeat": "must be repeat"
+  },
+  "storeData": {
+    "store": "Storage ",
+    "allStorage": "All storage"
+  },
+  "auth": {
+    "notRegistered": "Not registered?",
+    "signUp": "SignUp"
+  },
+  "createProduct": {
+    "newProduct": "New product"
+  },
+  "delivery": {
+    "title": "Delivery",
+    "supply": "Supply",
+    "in": "In",
+    "out": "Out"
+  },
+  "home": {
+    "last": "Last deliveries"
+  },
+  "move": {
+    "title": "Move",
+    "from": "From storage",
+    "to": "To storage",
+    "move": "Move"
+  },
+  "registration": {
+    "secondPassword": "Repeat password",
+    "adminPassword": "Admin password",
+    "haveAccount": "Have account?",
+    "create": "Create"
+  },
+  "table": {
+    "date": "Date",
+    "title": "Deliveries",
+    "next": "Next",
+    "previous": "Previous",
+    "shortSupply": "Sply"
+  },
+  "shared": {
+    "login": "Login",
+    "password": "Password",
+    "enter": "Enter",
+    "connectError": "Problem with connection! Try again!",
+    "connectDone": "Done!",
+    "name": "Name",
+    "add": "Add",
+    "storage": "Storage",
+    "fraction": "Fraction",
+    "fractionList": {
+      "waste": "Waste",
+      "small": "Small",
+      "standard": "Standard",
+      "big": "Big"
+    },
+    "product": "Product",
+    "weight": "Weight",
+    "provider": "Provider"
+  }
+}

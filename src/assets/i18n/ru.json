@@ -1,0 +1,74 @@
+{
+  "header": {
+    "home": "Главная",
+    "table": "Таблица",
+    "delivery": "Поставка",
+    "move": "Перемещение",
+    "exit": "Выход"
+  },
+  "info": {
+    "enterCorrect": "Введите валидный ",
+    "required": "поле должно быть заполненным",
+    "minlength": "мало символов",
+    "repeat": "должен быть идентичным"
+  },
+  "storeData": {
+    "store": "Склад ",
+    "allStorage": "Все склады"
+  },
+  "auth": {
+    "notRegistered": "Не зарегистрированы?",
+    "signUp": "Зарегистрироваться"
+  },
+  "createProduct": {
+    "newProduct": "Новое наименование"
+  },
+  "delivery": {
+    "title": "Поставка",
+    "supply": "Направление",
+    "in": "Приход",
+    "out": "Отправка"
+  },
+  "home": {
+    "last": "Последние поставки"
+  },
+  "move": {
+    "title": "Перемещение",
+    "from": "Со склада",
+    "to": "На склад",
+    "move": "Переместить"
+  },
+  "registration": {
+    "secondPassword": "Повторите пароль",
+    "adminPassword": "Пароль администратора",
+    "haveAccount": "Уже есть аккаунт?",
+    "create": "Создать"
+  },
+  "table": {
+    "date": "Дата",
+    "title": "Поставки",
+    "next": "Следующая",
+    "previous": "Назад",
+    "shortSupply": "Напр."
+  },
+  "shared": {
+    "login": "Логин",
+    "password": "Пароль",
+    "enter": "Войти",
+    "connectError": "Проблемы с подключением! Попробуйте еще раз!",
+    "connectDone": "Успешно!",
+    "name": "Наименование",
+    "add": "Добавить",
+    "storage": "Склад",
+    "fraction": "Фракция",
+    "fractionList": {
+      "waste": "Отходы",
+      "small": "Мелкая",
+      "standard": "Стандарт",
+      "big": "Крупная"
+    },
+    "product": "Продукт",
+    "weight": "Вес",
+    "provider": "Поставщик"
+  }
+}

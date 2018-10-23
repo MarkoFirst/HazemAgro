@@ -1,18 +1,23 @@
 <form #f="ngForm" class="auth_form" (ngSubmit)="onSubmit(f)">
-  <div class="main-form">
-    <div class="logo">
-				<img class="logo" src="/src/assets/images/icons/logo.png">
-    </div>
-    <input class="login" type="text" placeholder="Login" name="login" #login="ngModel" required ngModel>
-    <input class="pas" type="password" placeholder="Password" name="password" #psw="ngModel" required ngModel>
-    <button class="save" type="submit" [disabled]="f.invalid">Enter</button>
-    <p style="text-align: center;font-size: 13px;">Not registered?
-      <a routerLink="/registration" class="green-text">SignUp</a>
-    </p>
-  </div>
+	<div class="main-form">
+		<div class="logo">
+			<img class="logo" src="/src/assets/images/icons/logo.png">
+		</div>
+		<input class="login" type="text" placeholder="{{'shared.login' | translate}}" name="login" #login="ngModel" required
+		       ngModel>
+		<input class="pas" type="password" placeholder="{{'shared.password' | translate}}" name="password" #psw="ngModel"
+		       required ngModel>
+		<button class="save" type="submit" [disabled]="f.invalid">{{'shared.enter' | translate}}</button>
+		<p style="text-align: center;font-size: 13px;">{{'auth.notRegistered' | translate}}
+			<a routerLink="/registration" class="green-text">{{'auth.signUp' | translate}}</a>
+		</p>
+	</div>
 </form>
 
 <app-info-block
-        [inputList]="[login, psw]"
-        [errorList]="['login', 'password']"
+		[inputList]="[login, psw]"
+		[errorList]="[
+        'shared.login' | translate | lowercase,
+        'shared.password' | translate | lowercase
+    ]"
 ></app-info-block>

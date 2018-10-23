@@ -12,9 +12,9 @@ export class InfoBlockComponent {
 	@Input() errorList: string[];
 
 	myErrorList = [
-		{type: 'required', text: 'must be filled'},
-		{type: 'minlength' , text: 'need more characters'},
-		{type: 'repeat', text: 'must be repeat'}
+		'required',
+		'minlength',
+		'repeat'
 	];
 
   constructor() { }

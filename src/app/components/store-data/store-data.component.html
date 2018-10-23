@@ -2,7 +2,7 @@
      [style.overflow-y]="storageList > 3 || (productList && productList.length > 3 && idStore === 4) ? 'scroll' : null">
 	<div *ngFor="let store of storages$ | async; let item = index">
 		<ng-container *ngIf="item === idStore">
-			<h2>Storage {{idStore+1}}</h2>
+			<h2>{{'storeData.store' | translate}}{{idStore+1}}</h2>
 			<p *ngFor="let key of objectKeys(store.filling)">
 				<ng-container
 						*ngIf="store.filling[key].big || store.filling[key].small || store.filling[key].standard || store.filling[key].waste">
@@ -18,7 +18,7 @@
 	</div>
 	<ng-container *ngIf="idStore === 4">
 		<div>
-			<h2>All storage</h2>
+			<h2>{{'storeData.allStorage' | translate}}</h2>
 			<ng-container *ngFor="let product of productList">
 				<p *ngIf="product.big || product.small || product.standard || product.waste">
 					{{product.name}}:

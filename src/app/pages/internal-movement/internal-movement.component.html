@@ -1,48 +1,58 @@
-<h1 style="text-align: center">Move</h1>
+<h1 style="text-align: center">{{'move.title' | translate}}</h1>
 <form #form="ngForm" class="movement_form" (ngSubmit)="move(form)">
-  <div class="main-form">
-    <label for="storage">From storage</label>
-    <select [class.validation]="storage.touched" name="storage" id="storage" #storage="ngModel" required  ngModel [(ngModel)]="storageNow">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
+	<div class="main-form">
+		<label for="storage">{{'move.from' | translate}}</label>
+		<select [class.validation]="storage.touched" name="storage" id="storage" #storage="ngModel" required ngModel
+		        [(ngModel)]="storageNow">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
 
-    <label for="storage-for">To storage</label>
-    <select [class.validation]="storagefor.touched" name="storageFor" id="storage-for" #storagefor="ngModel" required ngModel>
-      <option *ngIf="storage.value !== '1'" value="1">1</option>
-      <option *ngIf="storage.value !== '2'" value="2">2</option>
-      <option *ngIf="storage.value !== '3'" value="3">3</option>
-    </select>
+		<label for="storage-for">{{'move.to' | translate}}</label>
+		<select [class.validation]="storagefor.touched" name="storageFor" id="storage-for" #storagefor="ngModel" required
+		        ngModel>
+			<option *ngIf="storage.value !== '1'" value="1">1</option>
+			<option *ngIf="storage.value !== '2'" value="2">2</option>
+			<option *ngIf="storage.value !== '3'" value="3">3</option>
+		</select>
 
-    <label for="product">Product</label>
-    <select [class.validation]="product.touched" name="product" id="product" #product="ngModel" required  ngModel>
-      <option *ngFor="let product of (getProducts(storage.value) | async)" [value]="product.id">{{product.name}}</option>
-    </select>
+		<label for="product">{{'shared.product' | translate}}</label>
+		<select [class.validation]="product.touched" name="product" id="product" #product="ngModel" required ngModel>
+			<option *ngFor="let product of (getProducts(storage.value) | async)" [value]="product.id">{{product.name}}
+			</option>
+		</select>
 
-    <label for="fraction">Fraction</label>
-    <select [class.validation]="fraction.touched" name="fraction" id="fraction" #fraction="ngModel" required  ngModel>
-      <option value="big">big</option>
-      <option value="small">small</option>
-      <option value="standard">standard</option>
-      <option value="waste">waste</option>
-    </select>
+		<label for="fraction">{{'shared.fraction' | translate}}</label>
+		<select [class.validation]="fraction.touched" name="fraction" id="fraction" #fraction="ngModel" required ngModel>
+			<option value="big">{{'shared.fractionList.big' | translate}}</option>
+			<option value="small">{{'shared.fractionList.small' | translate}}</option>
+			<option value="standard">{{'shared.fractionList.standard' | translate}}</option>
+			<option value="waste">{{'shared.fractionList.waste' | translate}}</option>
+		</select>
 
-    <input [class.validation]="weight.touched" type="number" placeholder="Weight" name="weight" #weight="ngModel" required  ngModel>
+		<input [class.validation]="weight.touched" type="number" placeholder="{{'shared.weight' | translate}}" name="weight"
+		       #weight="ngModel" required ngModel>
 
-    <button class="save" type="submit" [disabled]="form.invalid">Move</button>
-  </div>
+		<button class="save" type="submit" [disabled]="form.invalid">{{'move.move' | translate}}</button>
+	</div>
 </form>
 
 <app-info-block
-        [inputList]="[storage, storagefor, product, weight]"
-        [errorList]="['storage', 'storage-for', 'products', 'weight']"
+		[inputList]="[storage, storagefor, product, fraction, weight]"
+		[errorList]="[
+        'shared.storage' | translate | lowercase,
+        ('shared.storage' | translate | lowercase) + ' 2',
+        'shared.product' | translate | lowercase,
+        'shared.fraction' | translate | lowercase,
+        'shared.weight' | translate | lowercase
+        ]"
 ></app-info-block>
 
 <div *ngIf="connectError" class="error">
-  <h2>Problem with connection! Try again!</h2>
+	<h2>{{'shared.connectError' | translate}}</h2>
 </div>
 
 <div *ngIf="connectDone" class="done">
-  <h2>Movement done!</h2>
+	<h2>{{'shared.connectDone' | translate}}</h2>
 </div>

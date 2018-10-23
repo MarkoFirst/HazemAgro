@@ -1,58 +1,67 @@
-<h1 style="text-align: center">Delivery</h1>
+<h1 style="text-align: center">{{'delivery.title' | translate}}</h1>
 <form #form="ngForm" class="delivery_form" (ngSubmit)="addDelivery(form)">
-  <div class="main-form">
-    <label for="supply">Supply</label>
-    <select [class.validation]="supply.touched" name="supply" id="supply" #supply="ngModel" required ngModel>
-      <option value="true">In</option>
-      <option value="false">Out</option>
-    </select>
+	<div class="main-form">
+		<label for="supply">{{'delivery.supply' | translate}}</label>
+		<select [class.validation]="supply.touched" name="supply" id="supply" #supply="ngModel" required ngModel>
+			<option value="true">{{'delivery.in' | translate}}</option>
+			<option value="false">{{'delivery.out' | translate}}</option>
+		</select>
 
-    <label for="storage">Storage</label>
-    <select [class.validation]="storage.touched" name="storage" id="storage" #storage="ngModel" required ngModel>
-      <option value="first">1</option>
-      <option value="second">2</option>
-      <option value="third">3</option>
-    </select>
+		<label for="storage">{{'shared.storage' | translate}}</label>
+		<select [class.validation]="storage.touched" name="storage" id="storage" #storage="ngModel" required ngModel>
+			<option value="first">1</option>
+			<option value="second">2</option>
+			<option value="third">3</option>
+		</select>
 
-    <label for="products">Product</label>
-    <select [class.validation]="products.touched" name="products" id="products" #products="ngModel" required ngModel>
-      <option *ngFor="let product of products$ | async" [value]="product | json">{{product.name}}</option>
-    </select>
-    <a routerLink="/create">New product</a>
+		<label for="products">{{'shared.product' | translate}}</label>
+		<select [class.validation]="products.touched" name="products" id="products" #products="ngModel" required ngModel>
+			<option *ngFor="let product of products$ | async" [value]="product | json">{{product.name}}</option>
+		</select>
+		<a routerLink="/create">{{'createProduct.newProduct' | translate}}</a>
 
-    <input [class.validation]="weight.touched" type="number" placeholder="Weight" name="weight" #weight="ngModel" required ngModel>
+		<input [class.validation]="weight.touched" type="number" placeholder="{{'shared.weight' | translate}}" name="weight" #weight="ngModel"
+		       required ngModel>
 
-	  <ng-container *ngIf="supply.value !== 'false'; else elseSupply">
-      <input [class.validation]="waste.touched" #waste="ngModel" type="number" placeholder="Waste (%)" name="waste" ngModel required>
-      <input [class.validation]="big.touched" #big="ngModel" type="number" placeholder="Big (%)" name="big" ngModel required>
-      <input [class.validation]="small.touched" #small="ngModel" type="number" placeholder="Small (%)" name="small" ngModel required>
-	  </ng-container>
+		<ng-container *ngIf="supply.value !== 'false'; else elseSupply">
+			<input [class.validation]="waste.touched" #waste="ngModel" type="number" placeholder="{{'shared.fractionList.waste' | translate}} (%)" name="waste"
+			       ngModel required>
+			<input [class.validation]="big.touched" #big="ngModel" type="number" placeholder="{{'shared.fractionList.big' | translate}} (%)" name="big" ngModel
+			       required>
+			<input [class.validation]="small.touched" #small="ngModel" type="number" placeholder="{{'shared.fractionList.small' | translate}} (%)" name="small"
+			       ngModel required>
+		</ng-container>
 
-	  <ng-template #elseSupply>
-		  <label for="fraction">Fraction</label>
-		  <select name="fraction" id="fraction" ngModel>
-			  <option value="waste">Waste</option>
-			  <option value="standard">Standard</option>
-			  <option value="big">Big</option>
-			  <option value="small">Small</option>
-		  </select>
-	  </ng-template>
+		<ng-template #elseSupply>
+			<label for="fraction">{{'shared.fraction' | translate}}</label>
+			<select [class.validation]="fraction.touched" #fraction="ngModel" name="fraction" id="fraction" ngModel required>
+				<option value="waste">{{'shared.fractionList.waste' | translate}}</option>
+				<option value="standard">{{'shared.fractionList.standard' | translate}}</option>
+				<option value="big">{{'shared.fractionList.big' | translate}}</option>
+				<option value="small">{{'shared.fractionList.small' | translate}}</option>
+			</select>
+		</ng-template>
 
-    <input type="text" placeholder="Provider" name="provider" ngModel>
+		<input type="text" placeholder="{{'shared.provider' | translate}}" name="provider" ngModel>
 
-    <button class="save" type="submit" [disabled]="form.invalid">Add</button>
-  </div>
+		<button class="save" type="submit" [disabled]="form.invalid">{{'shared.add' | translate}}</button>
+	</div>
 </form>
 
 <app-info-block
-        [inputList]="[weight, supply, storage, products]"
-        [errorList]="['weight', 'supply', 'storage', 'products']"
+		[inputList]="[weight, supply, storage, products]"
+		[errorList]="[
+        'shared.weight' | translate | lowercase,
+        'delivery.supply' | translate | lowercase,
+        'shared.storage' | translate | lowercase,
+        'shared.product' | translate | lowercase
+    ]"
 ></app-info-block>
 
 <div *ngIf="connectError" class="error">
-  <h2>Problem with connection! Try again!</h2>
+	<h2>{{'shared.connectError' | translate}}</h2>
 </div>
 
 <div *ngIf="connectDone" class="done">
-  <h2>Delivery create!</h2>
+	<h2>{{'shared.connectDone' | translate}}</h2>
 </div>
