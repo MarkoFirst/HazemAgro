@@ -28,6 +28,7 @@ import {StoreService} from "./services/store/store.service";
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { MoneyComponent } from './pages/money/money.component';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyDi41jC_ngyXBuHU4EL9kRra9T2lMo_lOI',
@@ -51,7 +52,8 @@ export const firebaseConfig = {
 		CreateProductComponent,
 		InternalMovementComponent,
 		StoreDataComponent,
-		InfoBlockComponent
+		InfoBlockComponent,
+		MoneyComponent
 	],
 	imports: [
 		AppRoutingModule,

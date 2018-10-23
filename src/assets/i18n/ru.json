@@ -51,6 +51,13 @@
     "previous": "Назад",
     "shortSupply": "Напр."
   },
+  "money": {
+    "title": "Расходы",
+    "addTitle": "Пополнение",
+    "sum": "Сумма",
+    "description": "Описание",
+    "addMoney": "Пополнить"
+  },
   "shared": {
     "login": "Логин",
     "password": "Пароль",

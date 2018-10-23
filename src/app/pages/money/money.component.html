@@ -1,0 +1,39 @@
+<h1 style="text-align: center">{{'money.title' | translate}}</h1>
+<form #form="ngForm" (ngSubmit)="charge(form)">
+	<div class="main-form">
+		<input [class.validation]="cost.touched" type="number" placeholder="{{'money.sum' | translate}}" name="cost"
+		       #cost="ngModel" ngModel required>
+		<input [class.validation]="name.touched" type="text" placeholder="{{'money.description' | translate}}" name="name"
+		       #name="ngModel" ngModel required minlength="4">
+
+		<button class="save" type="submit" [disabled]="form.invalid">{{'shared.add' | translate}}</button>
+	</div>
+</form>
+
+<div *ngIf="userInMyApp.isAdmin">
+	<h1 style="text-align: center">{{'money.addTitle' | translate}}</h1>
+	<form #formAdd="ngForm" (ngSubmit)="addMoney(formAdd)">
+		<div class="main-form">
+			<input type="number" placeholder="{{'money.sum' | translate}}" name="add"
+			       #add="ngModel" ngModel required>
+
+			<button class="save" type="submit" [disabled]="formAdd.invalid">{{'money.addMoney' | translate}}</button>
+		</div>
+	</form>
+</div>
+
+<app-info-block
+		[inputList]="[cost, name]"
+		[errorList]="[
+    'money.sum' | translate | lowercase,
+    'money.description' | translate | lowercase
+    ]"
+></app-info-block>
+
+<div *ngIf="connectError" class="error">
+	<h2>{{'shared.connectError' | translate}}</h2>
+</div>
+
+<div *ngIf="connectDone" class="done">
+	<h2>{{'shared.connectDone' | translate}}</h2>
+</div>

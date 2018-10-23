@@ -58,11 +58,10 @@ export class AuthService implements OnDestroy {
 			.signInWithEmailAndPassword(email.toLowerCase() + '@hazem.com', password)
 			.then(value => {
 				this.myDb.selectDB('users', ref =>
-					ref.orderByChild('name')
-						.equalTo(value.user.email))
+					ref.orderByChild('name'))
 					.pipe(takeUntil(this.onDestroyStream$))
 					.subscribe((users: IMyUser[]) => {
-						this.storeService.setUser(users[0]);
+						this.storeService.setUser(users.find(item => value.user.email.includes(item.name.toLowerCase())));
 					});
 				this.logined.next(true);
 				this.localLogined = true;

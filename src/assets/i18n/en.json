@@ -51,6 +51,13 @@
     "previous": "Previous",
     "shortSupply": "Sply"
   },
+  "money": {
+    "title": "Charges",
+    "addTitle": "Add",
+    "sum": "Sum",
+    "description": "Description",
+    "addMoney": "Add"
+  },
   "shared": {
     "login": "Login",
     "password": "Password",

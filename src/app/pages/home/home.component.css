@@ -2,6 +2,33 @@
     padding-top: 160px;
 }
 
+#home-header {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    height: 40px;
+    background-color: #9E9E9E;
+}
+
+.home-header__block, .user-login {
+    font-size: 20px;
+    display: inline-block;
+    color: white;
+    padding: 10px 25px;
+}
+
+#home-header > div > span {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.user-login {
+    position: absolute;
+    right: 10px;
+}
+
 .main_page {
     width: 1366px;
     height: 100%;
@@ -127,6 +154,12 @@
     }
 }
 @media screen and (max-width: 500px) {
+    #home-header {
+        top: 45px;
+    }
+    .main_page {
+        margin-top: 50px;
+    }
     #dataBox {
         padding-top: 110px;
     }

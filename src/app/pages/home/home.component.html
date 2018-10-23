@@ -1,3 +1,20 @@
+<div id="home-header" onmousedown="return false" onselectstart="return false">
+	<div class="home-header__block">
+		<i class="fas fa-people-carry"></i>
+		<i class="fas fa-minus-square" style="margin-left: 7px; cursor: pointer" (click)="addPeople(-1)"></i>
+		<span>{{company ? company[2] : null}}</span>
+		<i class="fas fa-plus-square" style="cursor: pointer" (click)="addPeople(1)"></i>
+	</div>
+	<a routerLink="/money">
+		<div class="home-header__block" style="cursor: pointer">
+			<i class="fas fa-dollar-sign"></i>
+			<span>{{company ? company[1] : null}}</span>
+		</div>
+	</a>
+	<div class="user-login">
+		<span>{{userInMyApp.name}}</span>
+	</div>
+</div>
 <div class="main_page" (click)="showStorData($event, 4)">
 	<div class="main_box">
 

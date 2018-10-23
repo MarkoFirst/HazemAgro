@@ -8,6 +8,7 @@ import {TableComponent} from "../pages/table/table.component";
 import {DeliveryComponent} from "../pages/delivery/delivery.component";
 import {InternalMovementComponent} from "../pages/internal-movement/internal-movement.component";
 import {CreateProductComponent} from "../pages/create-product/create-product.component";
+import {MoneyComponent} from "../pages/money/money.component";
 
 const routes: Routes = [
 	{
@@ -41,6 +42,11 @@ const routes: Routes = [
 	{
 		path: 'delivery',
 		component: DeliveryComponent,
+		canActivate: [CanActivateViaAuthGuard]
+	},
+	{
+		path: 'money',
+		component: MoneyComponent,
 		canActivate: [CanActivateViaAuthGuard]
 	}
 ];
