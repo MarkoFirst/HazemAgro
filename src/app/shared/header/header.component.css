@@ -14,11 +14,15 @@
 #header .tabs a{
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 #header #language img{
     width: 20px;
     height: 20px;
     margin: 5px;
+    cursor: pointer;
+}
+#header #language a{
     cursor: pointer;
 }
 #language > div {
@@ -48,18 +52,23 @@
     display: flex;
     right: 50px;
 }
-
+#header .tabs a div p, #exit p{
+    margin: 0;
+}
 #language > div {
     width: 55px;
 }
-#header .tabs a div i{
+#header .tabs a div i, #exit i{
     display: none;
 }
-@media(max-width:414px) {
-    #header .tabs a div p{
+#exit{
+    margin-right: 20px;
+}
+@media(max-width:770px) {
+    #header .tabs a div p, #exit p{
         display: none;
     }
-    #header .tabs a div i{
+    #header .tabs a div i, #exit i{
         display: block;
     }
 

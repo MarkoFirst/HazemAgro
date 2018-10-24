@@ -23,7 +23,9 @@ export class DeliveryComponent implements OnInit {
 	}
 
 	addDelivery(form: NgForm) {
-		if (form.invalid) return;
+		if (form.invalid ||
+			(form.value.supply !== 'false' && form.value.waste + form.value.small + form.value.big > 100)
+		) return;
 
 		this.dbService.addNewDelivery({
 			date: Date.now().toString(),
