@@ -1,0 +1,32 @@
+<div class="table_box">
+	<div class="table-buttons">
+		<div class="btn">
+			<a routerLink="/table">
+				<button class="save">{{'table.title' | translate}}</button>
+			</a>
+		</div>
+		<div class="btn">
+			<button class="save" disabled>{{'money.title' | translate}}</button>
+		</div>
+	</div>
+	<table border="1">
+		<caption>{{'money.title' | translate}}</caption>
+		<tr>
+			<th>{{'table.date' | translate}}</th>
+			<th>{{'money.description' | translate}}</th>
+			<th>{{'money.sum' | translate}}</th>
+		</tr>
+		<tr *ngFor="let charge of (charges$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
+			<td>{{charge.date | date: 'dd.MM.yy - HH:mm'}}</td>
+			<td>{{charge.name}}</td>
+			<td>{{charge.cost}}</td>
+		</tr>
+	</table>
+	<div class="pagination">
+		<pagination-controls
+				(pageChange)="p = $event"
+				nextLabel="{{'table.next' | translate}}"
+				previousLabel="{{'table.previous' | translate}}">
+		</pagination-controls>
+	</div>
+</div>

@@ -10,9 +10,6 @@ table{
     border: 2px solid #9e9e9e;
     border-radius: 5px;
 }
-#weight:before{
-    content: 'Weight';
-}
 table tbody tr th{
     /*padding: 10px;*/
     background: #666;
@@ -59,12 +56,6 @@ span {
     }
 }
 @media screen and (max-width: 414px) {
-    .delivery_provider{
-        display: none;
-    }
-    #weight:before{
-        content: 'W';
-    }
     table{
         width: auto;
         table-layout: fixed;

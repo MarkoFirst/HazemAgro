@@ -9,6 +9,7 @@ import {DeliveryComponent} from "../pages/delivery/delivery.component";
 import {InternalMovementComponent} from "../pages/internal-movement/internal-movement.component";
 import {CreateProductComponent} from "../pages/create-product/create-product.component";
 import {MoneyComponent} from "../pages/money/money.component";
+import {TableMoneyComponent} from "../pages/table-money/table-money.component";
 
 const routes: Routes = [
 	{
@@ -27,6 +28,11 @@ const routes: Routes = [
 	{
 		path: 'table',
 		component: TableComponent,
+		canActivate: [CanActivateViaAuthGuard]
+	},
+	{
+		path: 'table-charges',
+		component: TableMoneyComponent,
 		canActivate: [CanActivateViaAuthGuard]
 	},
 	{

@@ -29,15 +29,39 @@ export class MoneyComponent implements OnInit {
 			date: Date.now().toString(),
 			cost: form.value.cost,
 			name: form.value.name
+		}).then(() => {
+			this.connectDone = true;
+			const update = {};
+
+			this.company[1] = this.company[1] - form.value.cost;
+			update['company/money'] = this.company[1];
+
+			this.dbService.updateDB(update);
+			form.reset();
 		})
+			.catch(() => this.connectError = true);
+
+		setTimeout(() => {
+			this.connectDone = false;
+			this.connectError = false;
+		}, 4000);
 	}
 
 	addMoney(form) {
 		const update = {};
 
-		this.company[2] = this.company[2] + form.value.add;
-		update['company/money'] = this.company[2];
+		this.company[1] = this.company[1] + form.value.add;
+		update['company/money'] = this.company[1];
 
 		this.dbService.updateDB(update)
+			.then(() => this.connectDone = true)
+			.catch(() => this.connectError = true);
+
+		setTimeout(() => {
+			this.connectDone = false;
+			this.connectError = false;
+		}, 4000);
+
+		form.reset();
 	}
 }
