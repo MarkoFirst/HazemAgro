@@ -2,7 +2,7 @@
 <form #form="ngForm" (ngSubmit)="charge(form)">
 	<div class="main-form">
 		<input [class.validation]="cost.touched" type="number" placeholder="{{'money.sum' | translate}}" name="cost"
-		       #cost="ngModel" ngModel required>
+		       #cost="ngModel" [max]="company ? company[1] : 100" ngModel required>
 		<input [class.validation]="name.touched" type="text" placeholder="{{'money.description' | translate}}" name="name"
 		       #name="ngModel" ngModel required minlength="4">
 

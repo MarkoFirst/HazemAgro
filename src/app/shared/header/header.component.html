@@ -4,7 +4,7 @@
     <a routerLink="/table"><div id="table" class="left-header-blocks"><i class="fas fa-table"></i><p>{{'header.table' | translate}}</p></div></a>
     <a routerLink="/delivery"><div id="delivery" class="left-header-blocks"><i class="fas fa-truck"></i><p>{{'header.delivery' | translate}}</p></div></a>
     <a routerLink="/movement"><div id="movement" class="left-header-blocks"><i class="fas fa-expand-arrows-alt"></i><p>{{'header.move' | translate}}</p></div></a>
-    <a routerLink="/auth"><div id="exit" class="left-header-blocks" (click)="authService.logout()"><i class="fas fa-sign-out-alt"></i><p>{{'header.exit' | translate}}</p></div></a>
+    <a><div id="exit" class="left-header-blocks" (click)="authService.logout()"><i class="fas fa-sign-out-alt"></i><p>{{'header.exit' | translate}}</p></div></a>
   </div>
   <div id="language">
     <img src="assets/images/icons/russia_2.png" width="40" height="40" (click)="changeLanguage(true)"/>

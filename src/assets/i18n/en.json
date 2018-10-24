@@ -10,7 +10,8 @@
     "enterCorrect": "Enter correct ",
     "required": "must be filled",
     "minlength": "need more characters",
-    "repeat": "must be repeat"
+    "repeat": "must be repeat",
+    "max": "more than 100%"
   },
   "storeData": {
     "store": "Storage ",

@@ -28,7 +28,7 @@ export class DataBaseService {
 	}
 
 	addNewDelivery(newDelivery: IDelivery, productDelivery: IProduct): ThenableReference {
-		this.selectDB(`storage/${newDelivery.storage}/filling/${newDelivery.idProduct}`, ref => ref)
+		return this.selectDB(`storage/${newDelivery.storage}/filling/${newDelivery.idProduct}`, ref => ref)
 			.first()
 			.subscribe((data: number[]) => {
 				const store = {};

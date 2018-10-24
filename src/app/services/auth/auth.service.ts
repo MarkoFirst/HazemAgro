@@ -76,7 +76,8 @@ export class AuthService implements OnDestroy {
 		this.localLogined = false;
 		this.firebaseAuth
 			.auth
-			.signOut();
+			.signOut()
+			.then(() => window.location.reload());
 	}
 
 	ngOnDestroy(): void {

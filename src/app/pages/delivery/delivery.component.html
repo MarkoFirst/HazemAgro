@@ -25,11 +25,11 @@
 
 		<ng-container *ngIf="supply.value !== 'false'; else elseSupply">
 			<input [class.validation]="waste.touched" #waste="ngModel" type="number" placeholder="{{'shared.fractionList.waste' | translate}} (%)" name="waste"
-			       ngModel required>
-			<input [class.validation]="big.touched" #big="ngModel" type="number" placeholder="{{'shared.fractionList.big' | translate}} (%)" name="big" ngModel
-			       required>
+			       ngModel required [max]="maxWeight - big.value - small.value">
+			<input [class.validation]="big.touched" #big="ngModel" type="number" placeholder="{{'shared.fractionList.big' | translate}} (%)" name="big"
+			       ngModel required [max]="maxWeight - waste.value - small.value">
 			<input [class.validation]="small.touched" #small="ngModel" type="number" placeholder="{{'shared.fractionList.small' | translate}} (%)" name="small"
-			       ngModel required>
+			       ngModel required [max]="maxWeight - big.value - waste.value">
 		</ng-container>
 
 		<ng-template #elseSupply>

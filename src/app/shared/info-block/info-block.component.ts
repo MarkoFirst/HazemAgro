@@ -14,7 +14,8 @@ export class InfoBlockComponent {
 	myErrorList = [
 		'required',
 		'minlength',
-		'repeat'
+		'repeat',
+		'max',
 	];
 
   constructor() { }
