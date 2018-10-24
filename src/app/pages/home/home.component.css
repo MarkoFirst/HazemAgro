@@ -50,7 +50,7 @@
     width: 40%;
     height: 500px;
     border-radius: 10px;
-    background: url(/src/assets/images/mochaGrunge.png) no-repeat;
+    background: url("http://itmforms.com/wp-content/uploads/2018/09/mochaGrunge_@2X.png") no-repeat;
     background-size: cover;
     position: relative;
 }

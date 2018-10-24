@@ -11,6 +11,7 @@ import {ICharge} from "../../config/interfaces/ICharge";
 export class TableMoneyComponent implements OnInit {
 
 	charges$: Observable<ICharge[]>;
+	p: number;
 
   constructor(public dbService: DataBaseService) { }
 

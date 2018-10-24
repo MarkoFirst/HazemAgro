@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
 	deliveries$: Observable<IDelivery[]>;
 	productList: IProduct[];
 	products$: Observable<IProduct[]>;
+	p: number;
 
 	constructor(public dbService: DataBaseService, public storeService: StoreService) { }
 
