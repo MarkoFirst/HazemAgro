@@ -161,6 +161,9 @@
     #dataBox {
         padding-top: 110px;
     }
+    .table_box {
+        display: block;
+    }
     .table_box, .stock_box {
         width: 95%;}
     .stock_box {
