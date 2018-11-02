@@ -3,6 +3,8 @@ import {Observable} from "rxjs";
 import {IProduct} from "../../config/interfaces/IProduct";
 import {DataBaseService} from "../../services/db/data-base.service";
 import {NgForm} from "@angular/forms";
+import {LocalStorage} from "../../decorators/local-storage.decorator";
+import {IMyUser} from "../../config/interfaces/IMyUser";
 
 @Component({
 	selector: 'app-delivery',
@@ -10,6 +12,9 @@ import {NgForm} from "@angular/forms";
 	styleUrls: ['./delivery.component.css']
 })
 export class DeliveryComponent implements OnInit {
+
+	@LocalStorage userInMyApp: IMyUser;
+
 	products$: Observable<IProduct[]>;
 	connectError: boolean = false;
 	connectDone: boolean = false;
@@ -39,6 +44,7 @@ export class DeliveryComponent implements OnInit {
 			big: form.value.big || null,
 			small: form.value.small || null,
 			fraction: form.value.fraction || null,
+			user: this.userInMyApp.name
 		}, JSON.parse(form.value.products));
 
 		this.connectDone = true;

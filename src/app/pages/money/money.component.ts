@@ -28,15 +28,21 @@ export class MoneyComponent implements OnInit {
 		this.dbService.insertDB<ICharge>('/company/charges/', {
 			date: Date.now().toString(),
 			cost: form.value.cost,
-			name: form.value.name
+			category: form.value.category,
+			name: form.value.name,
+			user: this.userInMyApp.name
 		}).then(() => {
 			this.connectDone = true;
-			const update = {};
 
-			this.company[1] = this.company[1] - form.value.cost;
-			update['company/money'] = this.company[1];
+			if (form.value.category !== 'fine' && form.value.category !== 'bonus') {
+				const update = {};
 
-			this.dbService.updateDB(update);
+				this.company[1] = this.company[1] - form.value.cost;
+				update['company/money'] = this.company[1];
+
+				this.dbService.updateDB(update);
+			}
+
 			form.reset();
 		})
 			.catch(() => this.connectError = true);

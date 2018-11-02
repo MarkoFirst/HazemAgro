@@ -142,6 +142,7 @@
     .table_box{
         width: 70%;
         margin-bottom: 120px;
+        display: block;
     }
     footer{
         position: relative;
@@ -161,11 +162,9 @@
     #dataBox {
         padding-top: 110px;
     }
-    .table_box {
-        display: block;
-    }
     .table_box, .stock_box {
-        width: 95%;}
+        width: 95%;
+    }
     .stock_box {
         height: 340px;
     }

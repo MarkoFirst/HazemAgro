@@ -1,0 +1,43 @@
+<div class="table_box">
+  <div class="table-buttons">
+    <div class="btn">
+      <a routerLink="/table">
+        <button class="save">{{'table.title' | translate}}</button>
+      </a>
+    </div>
+    <div class="btn">
+      <a routerLink="/table-charges">
+        <button class="save">{{'money.title' | translate}}</button>
+      </a>
+    </div>
+    <div class="btn">
+      <button class="save" disabled>{{'move.title' | translate}}</button>
+    </div>
+  </div>
+  <table border="1">
+    <caption>{{'move.title' | translate}}</caption>
+    <tr>
+      <th>{{'table.date' | translate}}</th>
+      <th>{{'shared.product' | translate}}</th>
+      <th>{{'shared.weight' | translate}}</th>
+      <th>{{'shared.fraction' | translate}}</th>
+      <th>{{'move.route' | translate}}</th>
+      <th>{{'shared.user' | translate}}</th>
+    </tr>
+    <tr *ngFor="let move of (moves$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
+      <td>{{move.date | date: 'dd.MM.yy - HH:mm'}}</td>
+      <td>{{move.product}}</td>
+      <td>{{move.weight}}</td>
+      <td>{{move.fraction}}</td>
+      <td>{{move.movement}}</td>
+      <td>{{move.user}}</td>
+    </tr>
+  </table>
+  <div class="pagination">
+    <pagination-controls
+        (pageChange)="p = $event"
+        nextLabel="{{'table.next' | translate}}"
+        previousLabel="{{'table.previous' | translate}}">
+    </pagination-controls>
+  </div>
+</div>

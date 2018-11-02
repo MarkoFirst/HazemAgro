@@ -50,7 +50,7 @@ span {
     display: inline-block;
 }
 .btn {
-    width: 50%;
+    width: 33%;
     display: inline-block;
 }
 @media screen and (max-width: 1366px) {

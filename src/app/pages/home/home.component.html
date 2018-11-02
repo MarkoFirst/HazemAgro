@@ -6,9 +6,9 @@
 		<i class="fas fa-plus-square" style="cursor: pointer" (click)="addPeople(1)"></i>
 	</div>
 	<a routerLink="/money">
-		<div class="home-header__block" style="cursor: pointer">
-			<i class="fas fa-dollar-sign"></i>
-			<span>{{company ? company[1] : null}}</span>
+		<div class="home-header__block" style="cursor: pointer" [style.color]="company && company[1] <= 0 ? 'red' : 'white'">
+			<i class="fas fa-wallet"></i>
+			<span> {{company ? company[1] : null}}</span>
 		</div>
 	</a>
 	<div class="user-login">

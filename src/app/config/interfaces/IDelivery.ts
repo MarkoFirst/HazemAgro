@@ -8,4 +8,5 @@ export interface IDelivery extends IFraction {
 	provider?: string;
 	storage: string;
 	fraction?: string;
+	user: string;
 }

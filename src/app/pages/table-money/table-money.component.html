@@ -8,18 +8,27 @@
 		<div class="btn">
 			<button class="save" disabled>{{'money.title' | translate}}</button>
 		</div>
+		<div class="btn">
+			<a routerLink="/table-movement">
+				<button class="save">{{'move.title' | translate}}</button>
+			</a>
+		</div>
 	</div>
 	<table border="1">
 		<caption>{{'money.title' | translate}}</caption>
 		<tr>
 			<th>{{'table.date' | translate}}</th>
+			<th>{{'money.category' | translate}}</th>
 			<th>{{'money.description' | translate}}</th>
 			<th>{{'money.sum' | translate}}</th>
+			<th>{{'shared.user' | translate}}</th>
 		</tr>
 		<tr *ngFor="let charge of (charges$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
 			<td>{{charge.date | date: 'dd.MM.yy - HH:mm'}}</td>
-			<td>{{charge.name}}</td>
-			<td>{{charge.cost}}</td>
+			<td>{{('money.categoryList.' + (charge.category || 'other')) | translate}}</td>
+			<td>{{charge.name || '___'}}</td>
+			<td>{{charge.cost || 0}}</td>
+			<td>{{charge.user || '___'}}</td>
 		</tr>
 	</table>
 	<div class="pagination">

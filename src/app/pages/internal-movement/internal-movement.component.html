@@ -19,7 +19,7 @@
 
 		<label for="product">{{'shared.product' | translate}}</label>
 		<select [class.validation]="product.touched" name="product" id="product" #product="ngModel" required ngModel>
-			<option *ngFor="let product of (getProducts(storage.value) | async)" [value]="product.id">{{product.name}}
+			<option *ngFor="let product of (getProducts(storage.value) | async)" [value]="product | json">{{product.name}}
 			</option>
 		</select>
 
@@ -29,6 +29,7 @@
 			<option value="small">{{'shared.fractionList.small' | translate}}</option>
 			<option value="standard">{{'shared.fractionList.standard' | translate}}</option>
 			<option value="waste">{{'shared.fractionList.waste' | translate}}</option>
+			<!--<option value="rawStuff">{{'shared.fractionList.rawStuff' | translate}}</option>-->
 		</select>
 
 		<input [class.validation]="weight.touched" type="number" placeholder="{{'shared.weight' | translate}}" name="weight"

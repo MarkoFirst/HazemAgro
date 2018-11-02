@@ -37,7 +37,8 @@
     "title": "Move",
     "from": "From storage",
     "to": "To storage",
-    "move": "Move"
+    "move": "Move",
+    "route": "Route"
   },
   "registration": {
     "secondPassword": "Repeat password",
@@ -57,7 +58,14 @@
     "addTitle": "Add",
     "sum": "Sum",
     "description": "Description",
-    "addMoney": "Add"
+    "addMoney": "Add",
+    "category": "Category",
+    "categoryList": {
+      "utilities": "Utilities",
+      "fine": "Fine",
+      "bonus": "Bonus",
+      "other": "Other"
+    }
   },
   "shared": {
     "login": "Login",
@@ -73,10 +81,12 @@
       "waste": "Waste",
       "small": "Small",
       "standard": "Standard",
-      "big": "Big"
+      "big": "Big",
+      "rawStuff": "Raw-stuff"
     },
     "product": "Product",
     "weight": "Weight",
-    "provider": "Provider"
+    "provider": "Provider",
+    "user": "User"
   }
 }

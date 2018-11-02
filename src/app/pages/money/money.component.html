@@ -3,6 +3,15 @@
 	<div class="main-form">
 		<input [class.validation]="cost.touched" type="number" placeholder="{{'money.sum' | translate}}" name="cost"
 		       #cost="ngModel" [max]="company ? company[1] : 100" ngModel required>
+
+		<label for="category">{{'money.category' | translate}}</label>
+		<select [class.validation]="category.touched" name="category" id="category" #category="ngModel" required ngModel>
+			<option value="utilities">{{'money.categoryList.utilities' | translate}}</option>
+			<option value="fine">{{'money.categoryList.fine' | translate}}</option>
+			<option value="bonus">{{'money.categoryList.bonus' | translate}}</option>
+			<option value="other">{{'money.categoryList.other' | translate}}</option>
+		</select>
+
 		<input [class.validation]="name.touched" type="text" placeholder="{{'money.description' | translate}}" name="name"
 		       #name="ngModel" ngModel required minlength="4">
 
@@ -23,9 +32,10 @@
 </div>
 
 <app-info-block
-		[inputList]="[cost, name]"
+		[inputList]="[cost, category, name]"
 		[errorList]="[
     'money.sum' | translate | lowercase,
+    'money.category' | translate | lowercase,
     'money.description' | translate | lowercase
     ]"
 ></app-info-block>
