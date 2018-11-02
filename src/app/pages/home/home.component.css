@@ -45,15 +45,23 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 10%;
+    padding-bottom: 95px;
 }
 .stock_box {
-    width: 40%;
+    width: calc(20% + 273px);
     height: 500px;
     border-radius: 10px;
     background: url("http://itmforms.com/wp-content/uploads/2018/09/mochaGrunge_@2X.png") no-repeat;
     background-size: cover;
     position: relative;
 }
+@media screen and (max-width: 1024px) and (max-height: 750px) {
+    .stock_box{
+        width: 50%;
+    }
+    .main_box {
+        margin-top: 4%;
+    }}
 
 .table_box {
     width: 40%;
@@ -69,7 +77,7 @@
     font-weight: 500;
 }
 .table_box table tbody tr th {
-    padding: 10px;
+    padding: 5px;
     font-weight: 500;
     border-radius: 5px;
 }
@@ -127,6 +135,40 @@
     right: 12%;
     position: absolute;
 }
+@media screen and (max-width: 1024px) and (max-height: 690px) {
+    .table_box table tbody tr th {
+        padding: 5px;
+    }
+    .container-1-img{
+        height: 70px;
+    }
+    .container-2-img{
+        top: 110px;
+        width: 80px;
+    }
+    .container-3-img{
+        width: 80px;
+top: 110px;
+    }
+    #dataBox{
+        padding-top: 110px;
+    }
+    .stock_box{
+        height: 430px;
+    }
+    .main_box {
+        padding-bottom: 95px;
+    }
+
+
+
+
+
+
+
+
+
+}
 @media screen and (max-width: 800px) {
     .main_page{
         height: auto;
@@ -134,6 +176,8 @@
     .main_box {
         flex-direction: column;
         text-align: -webkit-center;
+        margin-top: 10%;
+        padding-bottom: 0;
     }
     .stock_box{
         width: 70%;
@@ -149,11 +193,11 @@
         display: block;
     }
 }
-@media (max-height:652px) and (min-width:800px) {
-    .main_page{
-        height: 650px;
-    }
-}
+/*@media (max-height:652px) and (min-width:800px) {*/
+    /*.main_page{*/
+        /*height: 650px;*/
+    /*}*/
+/*}*/
 @media screen and (max-width: 500px) {
 
     .main_page {
