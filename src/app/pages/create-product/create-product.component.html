@@ -7,16 +7,16 @@
     <button class="save" type="submit" [disabled]="form.invalid">{{'shared.add' | translate}}</button>
   </div>
 </form>
-
+<div *ngIf="connectDone" class="done">
+  <h2>{{'shared.connectDone' | translate}}</h2>
+</div>
+<div *ngIf="connectError" class="error">
+  <h2>{{'shared.connectError' | translate}}</h2>
+</div>
 <app-info-block
         [inputList]="[name]"
         [errorList]="['shared.name' | translate | lowercase]"
 ></app-info-block>
 
-<div *ngIf="connectError" class="error">
-  <h2>{{'shared.connectError' | translate}}</h2>
-</div>
 
-<div *ngIf="connectDone" class="done">
-  <h2>{{'shared.connectDone' | translate}}</h2>
-</div>
+

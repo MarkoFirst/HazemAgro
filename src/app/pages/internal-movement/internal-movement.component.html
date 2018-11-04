@@ -38,6 +38,13 @@
 		<button class="save" type="submit" [disabled]="form.invalid">{{'move.move' | translate}}</button>
 	</div>
 </form>
+<div *ngIf="connectDone" class="done">
+	<h2>{{'shared.connectDone' | translate}}</h2>
+</div>
+
+<div *ngIf="connectError" class="error">
+	<h2>{{'shared.connectError' | translate}}</h2>
+</div>
 
 <app-info-block
 		[inputList]="[storage, storagefor, product, fraction, weight]"
@@ -49,11 +56,3 @@
         'shared.weight' | translate | lowercase
         ]"
 ></app-info-block>
-
-<div *ngIf="connectError" class="error">
-	<h2>{{'shared.connectError' | translate}}</h2>
-</div>
-
-<div *ngIf="connectDone" class="done">
-	<h2>{{'shared.connectDone' | translate}}</h2>
-</div>

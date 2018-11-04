@@ -47,10 +47,10 @@ span {
 .table-buttons {
     padding-top: 40px;
     width: 100%;
-    display: inline-block;
+    display:flex;
+    justify-content: space-around;
 }
 .btn {
-    width: 33%;
     display: inline-block;
 }
 @media screen and (max-width: 1366px) {
@@ -58,10 +58,12 @@ span {
         width: inherit;
     }
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 500px) {
     .delivery_provider{
         display: none;
     }
+}
+@media screen and (max-width: 414px) {
     #weight:before{
         content: 'W';
     }
@@ -72,7 +74,8 @@ span {
     td {
         font-size: 13px;
     }
-    .save {
-        width: 70%;
+    .table_box .table-buttons .btn .save{
+        font-size: 15px;
+        padding: 6px 6px;
     }
 }

@@ -55,7 +55,7 @@
     background-size: cover;
     position: relative;
 }
-@media screen and (max-width: 1024px) and (max-height: 750px) {
+@media screen and (max-width: 1366px) and (max-height: 750px) {
     .stock_box{
         width: 50%;
     }
@@ -135,7 +135,7 @@
     right: 12%;
     position: absolute;
 }
-@media screen and (max-width: 1024px) and (max-height: 690px) {
+@media screen and (max-width: 1366px) and (max-height: 690px) {
     .table_box table tbody tr th {
         padding: 5px;
     }
@@ -159,15 +159,6 @@ top: 110px;
     .main_box {
         padding-bottom: 95px;
     }
-
-
-
-
-
-
-
-
-
 }
 @media screen and (max-width: 800px) {
     .main_page{
