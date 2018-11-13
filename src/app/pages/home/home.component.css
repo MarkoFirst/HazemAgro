@@ -35,6 +35,13 @@
     margin: 0 auto;
     position: relative;
 }
+
+app-notes {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
 @media screen and (max-width: 1366px) {
     .main_page{
         width: inherit;
@@ -45,7 +52,7 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 10%;
-    padding-bottom: 95px;
+    padding-bottom: 40px;
 }
 .stock_box {
     width: calc(20% + 273px);
@@ -157,7 +164,7 @@ top: 110px;
         height: 430px;
     }
     .main_box {
-        padding-bottom: 95px;
+        padding-bottom: 40px;
     }
 }
 @media screen and (max-width: 800px) {
@@ -176,7 +183,7 @@ top: 110px;
     }
     .table_box{
         width: 70%;
-        margin-bottom: 120px;
+        margin-bottom: 40px;
         display: block;
     }
     footer{

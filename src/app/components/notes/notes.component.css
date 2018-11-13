@@ -1,0 +1,35 @@
+form {
+    background: #ECE9E0;
+    padding: 5px 20px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+}
+
+.pagination {
+    background: #ECE9E0;
+    margin-bottom: -10px;
+    margin-top: -10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.table_box {
+    padding: 0 20px;
+}
+.table_box table {
+    width: 100%;
+    border-radius: 5px;
+    background: #ECE9E0;
+}
+.table_box table caption {
+    padding: 0 10px 10px;
+    font-weight: 500;
+}
+.table_box table tbody tr th {
+    padding: 5px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+.table_box table tbody tr:nth-child(1) {
+    background: #666;
+    color: #FFFFFF;
+}
