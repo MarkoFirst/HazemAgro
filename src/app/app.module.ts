@@ -32,6 +32,7 @@ import { MoneyComponent } from './pages/money/money.component';
 import { TableMoneyComponent } from './pages/table-money/table-money.component';
 import { TableMovementComponent } from './pages/table-movement/table-movement.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { TrashComponent } from './shared/trash/trash.component';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyDi41jC_ngyXBuHU4EL9kRra9T2lMo_lOI',
@@ -59,7 +60,8 @@ export const firebaseConfig = {
 		MoneyComponent,
 		TableMoneyComponent,
 		TableMovementComponent,
-		NotesComponent
+		NotesComponent,
+		TrashComponent
 	],
 	imports: [
 		AppRoutingModule,

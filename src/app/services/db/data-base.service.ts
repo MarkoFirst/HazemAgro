@@ -24,10 +24,20 @@ export class DataBaseService {
 	}
 
 	insertDB<T>(from: string, objToPush: T): ThenableReference {
+		if (!objToPush['id']) {
+			const newPostKey = this.getNewId('notes');
+
+			objToPush['id'] = newPostKey;
+
+			const updates = {};
+			updates['/' + from + '/' + newPostKey] = objToPush;
+			return this.updateDB(updates)
+		}
+
 		return this.angularDataBase.list(from).push(objToPush);
 	}
 
-	addNewDelivery(newDelivery: IDelivery, productDelivery: IProduct): ThenableReference {
+	addNewDelivery(newDelivery: IDelivery, productDelivery: IProduct, removeDeliveryFlag?: boolean): ThenableReference {
 		return this.selectDB(`storage/${newDelivery.storage}/filling/${newDelivery.idProduct}`, ref => ref)
 			.first()
 			.subscribe((data: number[]) => {
@@ -46,7 +56,7 @@ export class DataBaseService {
 				}
 
 				return this.updateDB(store).then(() => {
-					this.insertDB<IDelivery>(`/delivery/`, newDelivery)
+					return (removeDeliveryFlag ? Promise.resolve() : this.insertDB<IDelivery>(`/delivery/`, newDelivery))
 						.then(() => {
 							const product = {};
 

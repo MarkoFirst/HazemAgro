@@ -29,7 +29,9 @@
 			<th>{{'table.shortSupply' | translate}}</th>
 		</tr>
 		<tr *ngFor="let delivery of (deliveries$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
-			<td>{{delivery.date | date: 'dd.MM.yy - HH:mm'}}</td>
+			<td>
+				<trash [element]="delivery" [from]="'delivery'"></trash>
+				{{delivery.date | date: 'dd.MM.yy - HH:mm'}}</td>
 			<td>{{findProductName(delivery.idProduct)}}</td>
 			<td class="delivery_provider">{{delivery.provider || '___'}}</td>
 			<td>{{delivery.weight}}</td>

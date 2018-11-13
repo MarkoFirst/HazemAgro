@@ -24,7 +24,9 @@
 			<th>{{'shared.user' | translate}}</th>
 		</tr>
 		<tr *ngFor="let charge of (charges$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
-			<td>{{charge.date | date: 'dd.MM.yy - HH:mm'}}</td>
+			<td>
+				<trash [element]="charge" [from]="'company/charges'"></trash>
+				{{charge.date | date: 'dd.MM.yy - HH:mm'}}</td>
 			<td>{{('money.categoryList.' + (charge.category || 'other')) | translate}}</td>
 			<td>{{charge.name || '___'}}</td>
 			<td>{{charge.cost || 0}}</td>

@@ -23,17 +23,8 @@ export class NotesComponent implements OnInit {
 
 	addNote(form) {
 		if (form.invalid) return;
-		const newPostKey = this.dbService.getNewId('notes');
 
-		const postData = {
-			id: newPostKey,
-			text: form.value.text,
-			date: Date.now()
-		};
-
-		const updates = {};
-		updates['/notes/' + newPostKey] = postData;
-		this.dbService.updateDB(updates)
+		this.dbService.insertDB('notes', {text: form.value.text, date: Date.now()})
 			.then(() => this.connectDone = true)
 			.catch(() => this.connectError = true);
 

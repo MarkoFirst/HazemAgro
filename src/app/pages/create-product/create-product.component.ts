@@ -16,16 +16,7 @@ export class CreateProductComponent {
 
 	create(form) {
 		if (form.invalid) return;
-		const newPostKey = this.dbService.getNewId('product');
-
-		const postData = {
-			id: newPostKey,
-			name: form.value.name
-		};
-
-		const updates = {};
-		updates['/product/' + newPostKey] = postData;
-		this.dbService.updateDB(updates)
+		this.dbService.insertDB('product', {name: form.value.name})
 			.then(() => this.connectDone = true)
 			.catch(() => this.connectError = true);
 

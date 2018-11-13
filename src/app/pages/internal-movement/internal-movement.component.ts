@@ -119,8 +119,7 @@ export class InternalMovementComponent implements OnInit {
 									Math.round(((data[this.getFractionIndex(this.formValue.fraction)] || 0) + this.formValue.weight) * 1000) / 1000;
 							}
 
-							return this.dbService.updateDB(productTo).then(() => {
-							});
+							return this.dbService.updateDB(productTo);
 						});
 				}).then(() => {
 					this.connectDone = true;

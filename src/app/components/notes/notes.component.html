@@ -6,7 +6,9 @@
       <th>{{'shared.text' | translate}}</th>
     </tr>
     <tr *ngFor="let note of (notes$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
-      <td>{{note.date | date: 'dd.MM - HH:mm'}}</td>
+      <td>
+        <trash [element]="note" [from]="'notes'"></trash>
+        {{note.date | date: 'dd.MM - HH:mm'}}</td>
       <td>{{note.text}}</td>
     </tr>
   </table>

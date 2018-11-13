@@ -1,0 +1,11 @@
+.remove {
+    float: left;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .remove {
+        display: none;
+    }
+}

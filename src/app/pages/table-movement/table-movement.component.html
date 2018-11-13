@@ -25,7 +25,9 @@
       <!--<th>{{'shared.user' | translate}}</th>-->
     </tr>
     <tr *ngFor="let move of (moves$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
-      <td>{{move.date | date: 'dd.MM.yy - HH:mm'}}</td>
+      <td>
+        <!--<trash [element]="move" [from]="'movement'"></trash>-->
+        {{move.date | date: 'dd.MM.yy - HH:mm'}}</td>
       <td>{{move.product}}</td>
       <td>{{move.weight}}</td>
       <td>{{'shared.fractionList.' + move.fraction | translate}}</td>
