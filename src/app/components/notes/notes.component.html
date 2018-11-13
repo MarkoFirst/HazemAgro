@@ -1,0 +1,36 @@
+<div class="table_box like-form">
+  <table border="1">
+    <caption>{{'home.notes' | translate}}</caption>
+    <tr>
+      <th>{{'table.date' | translate}}</th>
+      <th>{{'shared.text' | translate}}</th>
+    </tr>
+    <tr *ngFor="let note of (notes$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
+      <td>{{note.date | date: 'dd.MM - HH:mm'}}</td>
+      <td>{{note.text}}</td>
+    </tr>
+  </table>
+  <div class="pagination">
+    <pagination-controls
+        (pageChange)="p = $event"
+        nextLabel="{{'table.next' | translate}}"
+        previousLabel="{{'table.previous' | translate}}">
+    </pagination-controls>
+  </div>
+
+  <form #form="ngForm" (ngSubmit)="addNote(form)">
+    <div class="main-form">
+      <input type="text" placeholder="{{'shared.text' | translate}}" name="text" #text="ngModel" ngModel
+             required minlength="4">
+
+      <button class="save" type="submit" [disabled]="form.invalid">{{'shared.add' | translate}}</button>
+    </div>
+  </form>
+
+  <div *ngIf="connectDone" class="done">
+    <h2>{{'shared.connectDone' | translate}}</h2>
+  </div>
+  <div *ngIf="connectError" class="error">
+    <h2>{{'shared.connectError' | translate}}</h2>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import {IProduct} from "../../config/interfaces/IProduct";
 import {LocalStorage} from "../../decorators/local-storage.decorator";
 import {IMyUser} from "../../config/interfaces/IMyUser";
 import {IMovement} from "../../config/interfaces/IMovement";
+import {IDelivery} from "../../config/interfaces/IDelivery";
 
 @Component({
 	selector: 'app-internal-movement',
@@ -20,6 +21,7 @@ export class InternalMovementComponent implements OnInit {
 	productsFirstStore$: Observable<IProduct[]>;
 	productsSecondStore$: Observable<IProduct[]>;
 	productsThirdStore$: Observable<IProduct[]>;
+	deliveries$: Observable<IDelivery[]>;
 	connectError: boolean = false;
 	connectDone: boolean = false;
 	formValue: any;
@@ -50,6 +52,7 @@ export class InternalMovementComponent implements OnInit {
 
 		this.formValue = form.value;
 		this.formValue.product = JSON.parse(this.formValue.product);
+		this.formValue.delivery = JSON.parse(this.formValue.delivery);
 
 		this.dbService.selectDB(
 			`storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product.id}`
@@ -62,18 +65,59 @@ export class InternalMovementComponent implements OnInit {
 					return Error('There is no such quantity in stock!');
 				}
 
-				product[`/storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product.id}/${this.formValue.fraction}`] =
-					(data[this.getFractionIndex(this.formValue.fraction)] || 0) - this.formValue.weight;
+				if (this.formValue.fraction === 'rawStuff') {
+					product[`/storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product.id}/big`] =
+						Math.round(((data[0] || 0) - (this.formValue.weight * (this.formValue.delivery.big/100))) * 1000) / 1000;
+					product[`/storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product.id}/small`] =
+						Math.round(((data[1] || 0) - (this.formValue.weight * (this.formValue.delivery.small/100))) * 1000) / 1000;
+					product[`/storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product.id}/standard`] =
+						Math.round(((data[2] || 0) - (this.formValue.weight * (this.formValue.delivery.standard/100))) * 1000) / 1000;
+					product[`/storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product.id}/waste`] =
+						Math.round(((data[3] || 0) - (this.formValue.weight * (this.formValue.delivery.waste/100))) * 1000) / 1000;
+
+					if (this.formValue.storageFor === 'discard') {
+						product[`/product/${this.formValue.product.id}/big`] =
+							Math.round(((data[0] || 0) - (this.formValue.weight * (this.formValue.delivery.big/100))) * 1000) / 1000;
+						product[`/product/${this.formValue.product.id}/small`] =
+							Math.round(((data[1] || 0) - (this.formValue.weight * (this.formValue.delivery.small/100))) * 1000) / 1000;
+						product[`/product/${this.formValue.product.id}/standard`] =
+							Math.round(((data[2] || 0) - (this.formValue.weight * (this.formValue.delivery.standard/100))) * 1000) / 1000;
+						product[`/product/${this.formValue.product.id}/waste`] =
+							Math.round(((data[3] || 0) - (this.formValue.weight * (this.formValue.delivery.waste/100))) * 1000) / 1000;
+					}
+				} else {
+					product[`/storage/${this.getStorageName(this.formValue.storage)}/filling/${this.formValue.product.id}/${this.formValue.fraction}`] =
+						Math.round(((data[this.getFractionIndex(this.formValue.fraction)] || 0) - this.formValue.weight) * 1000) / 1000;
+
+					if (this.formValue.storageFor === 'discard') {
+						product[`/product/${this.formValue.product.id}/${this.formValue.fraction}`] =
+							Math.round(((data[this.getFractionIndex(this.formValue.fraction)] || 0) - this.formValue.weight) * 1000) / 1000;
+					}
+				}
 
 				return this.dbService.updateDB(product).then(() => {
 					this.dbService.selectDB(
 						`storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product.id}`
 					).first()
 						.subscribe((data: number[]) => {
+							console.log(this.formValue.storageFor);
+							console.log(this.formValue.storageFor === 'discard');
+							if (this.formValue.storageFor === 'discard') return Promise.resolve();
 							const productTo = {};
 
-							productTo[`/storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product.id}/${this.formValue.fraction}`] =
-								(data[this.getFractionIndex(this.formValue.fraction)] || 0) + this.formValue.weight;
+							if (this.formValue.fraction === 'rawStuff') {
+								productTo[`/storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product.id}/big`] =
+									Math.round(((data[0] || 0) + (this.formValue.weight * (this.formValue.delivery.big/100))) * 1000) / 1000;
+								productTo[`/storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product.id}/small`] =
+									Math.round(((data[1] || 0) + (this.formValue.weight * (this.formValue.delivery.small/100))) * 1000) / 1000;
+								productTo[`/storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product.id}/standard`] =
+									Math.round(((data[2] || 0) + (this.formValue.weight * (this.formValue.delivery.standard/100))) * 1000) / 1000;
+								productTo[`/storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product.id}/waste`] =
+									Math.round(((data[3] || 0) + (this.formValue.weight * (this.formValue.delivery.waste/100))) * 1000) / 1000;
+							} else {
+								productTo[`/storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product.id}/${this.formValue.fraction}`] =
+									Math.round(((data[this.getFractionIndex(this.formValue.fraction)] || 0) + this.formValue.weight) * 1000) / 1000;
+							}
 
 							return this.dbService.updateDB(productTo).then(() => {
 							});
@@ -99,6 +143,13 @@ export class InternalMovementComponent implements OnInit {
 		form.reset();
 	}
 
+	setSelectProduct({value}) {
+		const id = JSON.parse(value).id;
+
+		this.deliveries$ = this.dbService.selectDB<IDelivery>('delivery', ref => ref)
+			.map(value => value.filter(item => item.idProduct === id && item.isSupply));
+	}
+
 	getProducts(num) {
 		switch (num) {
 			case '1':
@@ -120,6 +171,8 @@ export class InternalMovementComponent implements OnInit {
 				return 'second';
 			case '3':
 				return 'third';
+			case 'discard':
+				return 'waste';
 		}
 	}
 

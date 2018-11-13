@@ -21,16 +21,16 @@
       <th>{{'shared.product' | translate}}</th>
       <th>{{'shared.weight' | translate}}</th>
       <th>{{'shared.fraction' | translate}}</th>
-      <th>{{'move.route' | translate}}</th>
-      <th>{{'shared.user' | translate}}</th>
+      <th style="word-break: break-all;">{{'move.route' | translate}}</th>
+      <!--<th>{{'shared.user' | translate}}</th>-->
     </tr>
     <tr *ngFor="let move of (moves$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
       <td>{{move.date | date: 'dd.MM.yy - HH:mm'}}</td>
       <td>{{move.product}}</td>
       <td>{{move.weight}}</td>
-      <td>{{move.fraction}}</td>
-      <td>{{move.movement}}</td>
-      <td>{{move.user}}</td>
+      <td>{{'shared.fractionList.' + move.fraction | translate}}</td>
+      <td>{{move.movement.length > 7 ? move.movement.slice(0, 5) + ('move.discard' | translate) : move.movement}}</td>
+      <!--<td>{{move.user}}</td>-->
     </tr>
   </table>
   <div class="pagination">

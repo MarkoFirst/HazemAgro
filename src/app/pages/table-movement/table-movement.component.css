@@ -56,8 +56,8 @@ span {
     }
 }
 @media screen and (max-width: 560px) {
-    .table_box table{
-        word-break: break-all;
+    .table_box table {
+        /*word-break: break-all;*/
     }
 }
 @media screen and (max-width: 414px) {

@@ -31,14 +31,16 @@
     "out": "Out"
   },
   "home": {
-    "last": "Last deliveries"
+    "last": "Last deliveries",
+    "notes": "Notes"
   },
   "move": {
     "title": "Move",
     "from": "From storage",
     "to": "To storage",
     "move": "Move",
-    "route": "Route"
+    "route": "Route",
+    "discard": "Discard"
   },
   "registration": {
     "secondPassword": "Repeat password",
@@ -87,6 +89,7 @@
     "product": "Product",
     "weight": "Weight",
     "provider": "Provider",
-    "user": "User"
+    "user": "User",
+    "text": "Text"
   }
 }

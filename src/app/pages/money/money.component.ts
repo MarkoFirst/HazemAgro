@@ -37,7 +37,7 @@ export class MoneyComponent implements OnInit {
 			if (form.value.category !== 'fine' && form.value.category !== 'bonus') {
 				const update = {};
 
-				this.company[1] = this.company[1] - form.value.cost;
+				this.company[1] = Math.round((this.company[1] - form.value.cost)*1000)/1000;
 				update['company/money'] = this.company[1];
 
 				this.dbService.updateDB(update);
@@ -56,7 +56,7 @@ export class MoneyComponent implements OnInit {
 	addMoney(form) {
 		const update = {};
 
-		this.company[1] = this.company[1] + form.value.add;
+		this.company[1] = Math.round((this.company[1] + form.value.add)*1000)/1000;
 		update['company/money'] = this.company[1];
 
 		this.dbService.updateDB(update)

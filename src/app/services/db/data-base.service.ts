@@ -34,15 +34,15 @@ export class DataBaseService {
 				const store = {};
 
 				if (newDelivery.isSupply) {
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/big`] = Math.round(((data[EFraction.big] || 0) + newDelivery.weight * (newDelivery.big / 100)) * 100) / 100;
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/small`] = Math.round(((data[EFraction.small] || 0) + newDelivery.weight * (newDelivery.small / 100)) * 100) / 100;
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/standard`] = Math.round(((data[EFraction.standard] || 0) + newDelivery.weight * (newDelivery.standard / 100)) * 100) / 100;
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/waste`] = Math.round(((data[EFraction.waste] || 0) + newDelivery.weight * (newDelivery.waste / 100)) * 100) / 100;
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/big`] = Math.round(((data[EFraction.big] || 0) + newDelivery.weight * (newDelivery.big / 100)) * 1000) / 1000;
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/small`] = Math.round(((data[EFraction.small] || 0) + newDelivery.weight * (newDelivery.small / 100)) * 1000) / 1000;
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/standard`] = Math.round(((data[EFraction.standard] || 0) + newDelivery.weight * (newDelivery.standard / 100)) * 1000) / 1000;
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/waste`] = Math.round(((data[EFraction.waste] || 0) + newDelivery.weight * (newDelivery.waste / 100)) * 1000) / 1000;
 				} else {
 
 					if (data[EFraction[newDelivery.fraction]] < newDelivery.weight) return alert('There is no such quantity in stock!');
 
-					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/${newDelivery.fraction}`] = data[EFraction[newDelivery.fraction]] - newDelivery.weight;
+					store[`/storage/${newDelivery.storage}/filling/${newDelivery.idProduct}/${newDelivery.fraction}`] = Math.round((data[EFraction[newDelivery.fraction]] - newDelivery.weight) * 1000) / 1000;
 				}
 
 				return this.updateDB(store).then(() => {
@@ -51,12 +51,12 @@ export class DataBaseService {
 							const product = {};
 
 							if (newDelivery.isSupply) {
-								product[`/product/${newDelivery.idProduct}/waste`] = Math.round(((productDelivery.waste || 0) + newDelivery.weight * (newDelivery.waste / 100)) * 100) / 100;
-								product[`/product/${newDelivery.idProduct}/standard`] = Math.round(((productDelivery.standard || 0) + newDelivery.weight * (newDelivery.standard / 100)) * 100) / 100;
-								product[`/product/${newDelivery.idProduct}/big`] = Math.round(((productDelivery.big || 0) + newDelivery.weight * (newDelivery.big / 100)) * 100) / 100;
-								product[`/product/${newDelivery.idProduct}/small`] = Math.round(((productDelivery.small || 0) + newDelivery.weight * (newDelivery.small / 100)) * 100) / 100;
+								product[`/product/${newDelivery.idProduct}/waste`] = Math.round(((productDelivery.waste || 0) + newDelivery.weight * (newDelivery.waste / 100)) * 1000) / 1000;
+								product[`/product/${newDelivery.idProduct}/standard`] = Math.round(((productDelivery.standard || 0) + newDelivery.weight * (newDelivery.standard / 100)) * 1000) / 1000;
+								product[`/product/${newDelivery.idProduct}/big`] = Math.round(((productDelivery.big || 0) + newDelivery.weight * (newDelivery.big / 100)) * 1000) / 1000;
+								product[`/product/${newDelivery.idProduct}/small`] = Math.round(((productDelivery.small || 0) + newDelivery.weight * (newDelivery.small / 100)) * 1000) / 1000;
 							} else {
-								product[`/product/${newDelivery.idProduct}/${newDelivery.fraction}`] = productDelivery[newDelivery.fraction] - newDelivery.weight;
+								product[`/product/${newDelivery.idProduct}/${newDelivery.fraction}`] = Math.round((productDelivery[newDelivery.fraction] - newDelivery.weight) * 1000) / 1000;
 							}
 
 							return this.updateDB(product);
