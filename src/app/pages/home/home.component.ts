@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit {
 	  this.products$.forEach(i => {
 		  this.storeService.setProductList(i);
 		  this.productList = i;
-	  })
-  }
+	  });
+	}
 
 	showStorData(event, idStore) {
 		this.idStore = this.idStore === idStore ? 4 : idStore;
@@ -46,11 +46,32 @@ export class HomeComponent implements OnInit {
 		return this.productList.find(item => item.id === id).name;
 	}
 
-	addPeople(count) {
+	addPeople(time) {
+		const count = prompt('Сколько человек будет в ' + (time === 'day' ? 'ДНЕВНУЮ' : 'НОЧНУЮ') + ' смену?', '');
+		const manager = prompt('Кто завсклада на данную смену?', this.userInMyApp.name);
+
+		if (!count || !time || !manager) return;
+
 		const update = {};
 
-		update['company/people'] = this.company[2] + count;
+		update['company/people/count'] = count;
+		update['company/people/time'] = time;
+		update['company/people/manager'] = manager;
 
 		this.dbService.updateDB(update);
+
+		this.dbService.insertDB('statistic', {date: Date.now(), count, time, manager, user: this.userInMyApp.name})
+	}
+
+	checkPeople() {
+		if (!this.company) return;
+
+		const hour = new Date().getHours();
+
+		if (hour > 10 && this.company[2].time === 'night') {
+			this.addPeople('day')
+		} else if ((hour > 22 || hour < 10) && this.company[2].time === 'day') {
+			this.addPeople('night');
+		}
 	}
 }

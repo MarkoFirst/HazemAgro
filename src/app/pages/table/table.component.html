@@ -43,11 +43,12 @@
 					{{'shared.fractionList.' + delivery.fraction | translate}}
 				</ng-template>
 			</td>
-			<td>
+			<td (click)="setCost(delivery)">
 				<i class="fas"
 				   [ngClass]="delivery.isSupply ? 'fa-sign-in-alt' : 'fa-sign-out-alt'"
 				   [style.color]="delivery.isSupply ? 'green' : 'saddlebrown'">
 				</i>
+				<span *ngIf="userInMyApp.isAdmin && delivery.cost"><br>{{ delivery.cost }} $</span>
 			</td>
 		</tr>
 	</table>

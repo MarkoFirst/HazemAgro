@@ -68,7 +68,8 @@ app-notes {
     }
     .main_box {
         margin-top: 4%;
-    }}
+    }
+}
 
 .table_box {
     width: 40%;
@@ -96,6 +97,7 @@ app-notes {
     position: absolute;
     border-radius: 10px;
     text-align: center;
+    cursor: pointer;
 }
 .stock_box div h1{
     z-index: 2;

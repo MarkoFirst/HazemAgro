@@ -20,8 +20,8 @@
 			<th>{{'table.date' | translate}}</th>
 			<th>{{'money.category' | translate}}</th>
 			<th>{{'money.description' | translate}}</th>
-			<th>{{'money.sum' | translate}}</th>
-			<th>{{'shared.user' | translate}}</th>
+			<th><span class="mobile-icon">{{'money.sum' | translate}}</span>$</th>
+			<th><span class="mobile-icon">{{'shared.user' | translate}}</span><i class="fas fa-user"></i></th>
 		</tr>
 		<tr *ngFor="let charge of (charges$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
 			<td>

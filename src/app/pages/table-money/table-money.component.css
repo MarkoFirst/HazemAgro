@@ -56,8 +56,11 @@ span {
     }
 }
 @media screen and (max-width: 470px) {
-    .table_box table{
-        word-break: break-all;
+    .table_box table {
+        /*word-break: break-all;*/
+    }
+    .mobile-icon {
+       display: none;
     }
 }
 @media screen and (max-width: 414px) {
@@ -66,7 +69,7 @@ span {
         table-layout: fixed;
     }
     td {
-        font-size: 13px;
+        font-size: 12px;
     }
     .table_box .table-buttons .btn .save{
         font-size: 15px;
