@@ -1,27 +1,15 @@
 <div class="table_box">
-	<div class="table-buttons">
-		<div class="btn">
-			<a routerLink="/table">
-				<button class="save">{{'table.title' | translate}}</button>
-			</a>
-		</div>
-		<div class="btn">
-			<button class="save" disabled>{{'money.title' | translate}}</button>
-		</div>
-		<div class="btn">
-			<a routerLink="/table-movement">
-				<button class="save">{{'move.title' | translate}}</button>
-			</a>
-		</div>
-	</div>
+
+	<app-navigate-table></app-navigate-table>
+
 	<table border="1">
 		<caption>{{'money.title' | translate}}</caption>
 		<tr>
 			<th>{{'table.date' | translate}}</th>
 			<th>{{'money.category' | translate}}</th>
 			<th>{{'money.description' | translate}}</th>
-			<th><span class="mobile-icon">{{'money.sum' | translate}}</span>$</th>
-			<th><span class="mobile-icon">{{'shared.user' | translate}}</span><i class="fas fa-user"></i></th>
+			<th><span class="mobile-icon">{{'money.sum' | translate}} </span>$</th>
+			<th><span class="mobile-icon">{{'shared.user' | translate}} </span><i class="fas fa-user"></i></th>
 		</tr>
 		<tr *ngFor="let charge of (charges$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
 			<td>

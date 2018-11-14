@@ -34,18 +34,23 @@ export class MoneyComponent implements OnInit {
 		}).then(() => {
 			this.connectDone = true;
 
-			if (form.value.category !== 'fine' && form.value.category !== 'bonus') {
-				const update = {};
+			const update = {};
+			const wallet = form.value.category !== 'fine' && form.value.category !== 'bonus' ? 'wallet' : 'fine';
 
-				this.company[1] = Math.round((this.company[1] - form.value.cost)*1000)/1000;
-				update['company/money'] = this.company[1];
+			if (form.value.category === 'fine') form.value.cost *= -1;
 
-				this.dbService.updateDB(update);
-			}
+			this.company[1][wallet] = Math.round((this.company[1][wallet] - form.value.cost) * 1000) / 1000;
+
+			update['company/money/' + wallet] = this.company[1][wallet];
+
+			this.dbService.updateDB(update);
 
 			form.reset();
 		})
-			.catch(() => this.connectError = true);
+			.catch((e) => {
+				console.error(e);
+				this.connectError = true;
+			});
 
 		setTimeout(() => {
 			this.connectDone = false;
@@ -56,7 +61,7 @@ export class MoneyComponent implements OnInit {
 	addMoney(form) {
 		const update = {};
 
-		this.company[1] = Math.round((this.company[1] + form.value.add)*1000)/1000;
+		this.company[1] = Math.round((this.company[1] + form.value.add) * 1000) / 1000;
 		update['company/money'] = this.company[1];
 
 		this.dbService.updateDB(update)

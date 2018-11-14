@@ -1,0 +1,21 @@
+.table-buttons {
+    padding-top: 40px;
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+}
+.btn {
+    display: inline-block;
+}
+
+@media screen and (max-width: 414px) {
+    .table-buttons {
+        padding-top: 0;
+        margin-bottom: -30px;
+        flex-direction: column;
+    }
+    .table-buttons .btn .save{
+        font-size: 15px;
+        padding: 6px 6px;
+    }
+}

@@ -100,8 +100,6 @@ export class InternalMovementComponent implements OnInit {
 						`storage/${this.getStorageName(this.formValue.storageFor)}/filling/${this.formValue.product.id}`
 					).first()
 						.subscribe((data: number[]) => {
-							console.log(this.formValue.storageFor);
-							console.log(this.formValue.storageFor === 'discard');
 							if (this.formValue.storageFor === 'discard') return Promise.resolve();
 							const productTo = {};
 

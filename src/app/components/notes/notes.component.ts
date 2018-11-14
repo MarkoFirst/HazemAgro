@@ -12,6 +12,7 @@ export class NotesComponent implements OnInit {
 
 	connectError: boolean = false;
 	connectDone: boolean = false;
+	p: number;
 
 	notes$: Observable<INotes[]>;
 

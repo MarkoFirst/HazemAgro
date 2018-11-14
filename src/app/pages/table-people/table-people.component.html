@@ -1,0 +1,31 @@
+<div class="table_box">
+
+  <app-navigate-table></app-navigate-table>
+
+  <table border="1">
+    <caption>{{'money.title' | translate}}</caption>
+    <tr>
+      <th>{{'table.date' | translate}}</th>
+      <th>{{'people.time' | translate}}</th>
+      <th>{{'people.manager' | translate}}</th>
+      <th>{{'people.count' | translate}}</th>
+      <th>{{'people.why' | translate}}</th>
+      <!--<th><span class="mobile-icon">{{'shared.user' | translate}} </span><i class="fas fa-user"></i></th>-->
+    </tr>
+    <tr *ngFor="let people of (people$ | async)?.slice().reverse() | paginate: { itemsPerPage: 15, currentPage: p }">
+      <td>{{people.date | date: 'dd.MM.yy'}}</td>
+      <td>{{('people.' + (people.time)) | translate}}</td>
+      <td>{{people.manager}}</td>
+      <td>{{people.count}}</td>
+      <td>{{people.why || '___'}}</td>
+      <!--<td>{{people.user || '___'}}</td>-->
+    </tr>
+  </table>
+  <div class="pagination">
+    <pagination-controls
+        (pageChange)="p = $event"
+        nextLabel="{{'table.next' | translate}}"
+        previousLabel="{{'table.previous' | translate}}">
+    </pagination-controls>
+  </div>
+</div>

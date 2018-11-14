@@ -16,6 +16,7 @@
     display: inline-block;
     color: white;
     padding: 10px 25px;
+    cursor: pointer;
 }
 
 #home-header > div > span {
@@ -211,6 +212,9 @@ app-notes {
     .stock_box {
         height: 340px;
     }
+    .home-header__block, .user-login {
+        padding: 10px 2px;
+    }
     .container-1-img{
         width: 210px;
         height: 70px;
@@ -241,6 +245,9 @@ app-notes {
     }
     .container-1-h {
         top: 8.5%;
+    }
+    .user-login {
+        font-size: 14px;
     }
 }
 @media screen and (max-width: 370px) {

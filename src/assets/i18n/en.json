@@ -69,6 +69,15 @@
       "other": "Other"
     }
   },
+  "people": {
+    "title": "Work shifts",
+    "count": "Count",
+    "manager": "Manager",
+    "time": "Shift",
+    "why": "Why",
+    "night": "Night",
+    "day": "Day"
+  },
   "shared": {
     "login": "Login",
     "password": "Password",

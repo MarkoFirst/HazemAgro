@@ -41,15 +41,6 @@ span {
     background: #666;
     color: #FFFFFF;
 }
-.table-buttons {
-    padding-top: 40px;
-    width: 100%;
-    display:flex;
-    justify-content: space-around;
-}
-.btn {
-    display: inline-block;
-}
 @media screen and (max-width: 1366px) {
     table{
         width: inherit;
@@ -68,8 +59,8 @@ span {
     td {
         font-size: 13px;
     }
-    .table_box .table-buttons .btn .save{
+    .table_box {
         font-size: 15px;
-        padding: 6px 6px;
+        /*padding: 6px 6px;*/
     }
 }

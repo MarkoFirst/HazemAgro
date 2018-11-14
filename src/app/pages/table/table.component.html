@@ -1,19 +1,7 @@
 <div class="table_box">
-	<div class="table-buttons">
-		<div class="btn">
-			<button class="save" disabled>{{'table.title' | translate}}</button>
-		</div>
-		<div class="btn">
-			<a routerLink="/table-charges">
-				<button class="save">{{'money.title' | translate}}</button>
-			</a>
-		</div>
-		<div class="btn">
-			<a routerLink="/table-movement">
-				<button class="save">{{'move.title' | translate}}</button>
-			</a>
-		</div>
-	</div>
+
+	<app-navigate-table></app-navigate-table>
+
 	<table border="1">
 		<caption>{{'table.title' | translate}}</caption>
 		<tr>

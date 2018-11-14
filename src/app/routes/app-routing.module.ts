@@ -11,6 +11,7 @@ import {CreateProductComponent} from "../pages/create-product/create-product.com
 import {MoneyComponent} from "../pages/money/money.component";
 import {TableMoneyComponent} from "../pages/table-money/table-money.component";
 import {TableMovementComponent} from "../pages/table-movement/table-movement.component";
+import {TablePeopleComponent} from "../pages/table-people/table-people.component";
 
 const routes: Routes = [
 	{
@@ -39,6 +40,11 @@ const routes: Routes = [
 	{
 		path: 'table-movement',
 		component: TableMovementComponent,
+		canActivate: [CanActivateViaAuthGuard]
+	},
+	{
+		path: 'table-people',
+		component: TablePeopleComponent,
 		canActivate: [CanActivateViaAuthGuard]
 	},
 	{

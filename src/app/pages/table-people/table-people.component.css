@@ -10,9 +10,6 @@ table{
     border: 2px solid #9e9e9e;
     border-radius: 5px;
 }
-#weight:before{
-    content: 'Weight';
-}
 table tbody tr th{
     /*padding: 10px;*/
     background: #666;
@@ -32,6 +29,9 @@ span {
     font-size: 12px;
     left: 0;
 }
+.mobile-icon {
+    font-size: 16px;
+}
 .table_box{
     padding-bottom:  120px;
 }
@@ -49,21 +49,21 @@ span {
         width: inherit;
     }
 }
-@media screen and (max-width: 500px) {
-    .delivery_provider{
+@media screen and (max-width: 470px) {
+    .table_box table {
+        /*word-break: break-all;*/
+    }
+    .mobile-icon {
         display: none;
     }
 }
 @media screen and (max-width: 414px) {
-    #weight:before{
-        content: 'W';
-    }
     table{
         width: auto;
         table-layout: fixed;
     }
     td {
-        font-size: 13px;
+        font-size: 12px;
     }
     .table_box {
         font-size: 15px;

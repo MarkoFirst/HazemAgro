@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 	  this.deliveries$ = this.dbService.selectDB<IDelivery>('delivery', ref => ref.orderByChild('date'));
-	  this.dbService.selectDB<number>('company').subscribe(value => this.company = value);
+	  this.dbService.selectDB<number>('company').subscribe(value => {this.company = value; this.checkPeople()});
 
 	  this.products$ = this.dbService.selectDB<IProduct>('product');
 	  this.products$.forEach(i => {
@@ -46,11 +46,13 @@ export class HomeComponent implements OnInit {
 		return this.productList.find(item => item.id === id).name;
 	}
 
-	addPeople(time) {
+	addPeople(time, rewrite?: boolean) {
 		const count = prompt('Сколько человек будет в ' + (time === 'day' ? 'ДНЕВНУЮ' : 'НОЧНУЮ') + ' смену?', '');
 		const manager = prompt('Кто завсклада на данную смену?', this.userInMyApp.name);
 
-		if (!count || !time || !manager) return;
+		const why = rewrite ? prompt('Причина изменения?', '') : '';
+
+		if (!count || !time || !manager || (rewrite && !why)) return;
 
 		const update = {};
 
@@ -60,11 +62,26 @@ export class HomeComponent implements OnInit {
 
 		this.dbService.updateDB(update);
 
-		this.dbService.insertDB('statistic', {date: Date.now(), count, time, manager, user: this.userInMyApp.name})
+		const data = {
+			date: Date.now(),
+			count,
+			time,
+			manager,
+			user: this.userInMyApp.name
+		};
+
+		if (rewrite) data['why'] = why;
+
+		this.dbService.insertDB('statistic', data)
 	}
 
-	checkPeople() {
+	checkPeople(rewrite?: boolean) {
 		if (!this.company) return;
+
+		if (rewrite) {
+			this.addPeople(this.company[2].time, rewrite);
+			return;
+		}
 
 		const hour = new Date().getHours();
 
