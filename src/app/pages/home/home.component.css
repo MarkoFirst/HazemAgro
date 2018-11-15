@@ -42,12 +42,6 @@ app-notes {
     justify-content: center;
     padding-bottom: 100px;
 }
-
-@media screen and (max-width: 1366px) {
-    .main_page{
-        width: inherit;
-    }
-}
 .main_box {
     display: flex;
     justify-content: space-around;
@@ -56,12 +50,20 @@ app-notes {
     padding-bottom: 40px;
 }
 .stock_box {
-    width: calc(20% + 273px);
+    width: 500px;
     height: 500px;
     border-radius: 10px;
     background: url("http://www.poljoprivrednaapoteka.com/images/low_contrast_linen_@2X.png") no-repeat;
     background-size: cover;
     position: relative;
+}
+@media screen and (max-width: 1366px) {
+    .main_page{
+        width: inherit;
+    }
+    .main_box {
+        margin-top: 5%;
+    }
 }
 @media screen and (max-width: 1366px) and (max-height: 750px) {
     .stock_box{

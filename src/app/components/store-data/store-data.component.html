@@ -7,11 +7,13 @@
 				<ng-container
 						*ngIf="store.filling[key].big || store.filling[key].small || store.filling[key].standard || store.filling[key].waste">
 					{{getProductName(key)}}:
+					<span>{{store.filling[key].big + store.filling[key].small + store.filling[key].standard + store.filling[key].waste}}</span>
 					<br>
 					<span>{{store.filling[key].big}}/</span>
 					<span>{{store.filling[key].small}}/</span>
 					<span>{{store.filling[key].standard}}/</span>
 					<span>{{store.filling[key].waste}}</span>
+
 				</ng-container>
 			</p>
 		</ng-container>
@@ -22,6 +24,7 @@
 			<ng-container *ngFor="let product of productList">
 				<p *ngIf="product.big || product.small || product.standard || product.waste">
 					{{product.name}}:
+					<span>{{(product.big || 0) + (product.small || 0) + (product.standard || 0) + (product.waste || 0)}}</span>
 					<br>
 					<span>{{product.big || 0}} / </span>
 					<span>{{product.small || 0}} / </span>

@@ -48,7 +48,10 @@ export class HomeComponent implements OnInit {
 
 	addPeople(time, rewrite?: boolean) {
 		const count = prompt('Сколько человек будет в ' + (time === 'day' ? 'ДНЕВНУЮ' : 'НОЧНУЮ') + ' смену?', '');
+		if (!count) return;
+
 		const manager = prompt('Кто завсклада на данную смену?', this.userInMyApp.name);
+		if (!manager) return;
 
 		const why = rewrite ? prompt('Причина изменения?', '') : '';
 
@@ -72,7 +75,17 @@ export class HomeComponent implements OnInit {
 
 		if (rewrite) data['why'] = why;
 
-		this.dbService.insertDB('statistic', data)
+		this.dbService.insertDB('statistic', data);
+
+		if (time === 'night' && !rewrite) {
+			const olchick = prompt('Сколько часов отработала Ольга за ' + new Date().getDay() + ' число?', '0');
+			// const ura = prompt('Сколько часов отработал Юрий за ' + new Date().getDay() + ' число?', '0');
+
+			if (!olchick) return;
+
+			this.dbService.insertDB('users/-LQFYuDQmyzkszgaqTSh/worktime/' + new Date().getMonth(),
+				{time: olchick, date: Date.now()});
+		}
 	}
 
 	checkPeople(rewrite?: boolean) {
@@ -85,9 +98,9 @@ export class HomeComponent implements OnInit {
 
 		const hour = new Date().getHours();
 
-		if (hour > 10 && this.company[2].time === 'night') {
+		if (hour >=10 && this.company[2].time === 'night') {
 			this.addPeople('day')
-		} else if ((hour > 22 || hour < 10) && this.company[2].time === 'day') {
+		} else if ((hour >= 20 || hour < 10) && this.company[2].time === 'day') {
 			this.addPeople('night');
 		}
 	}

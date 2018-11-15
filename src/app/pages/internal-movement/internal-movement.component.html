@@ -4,23 +4,25 @@
 		<label for="storage">{{'move.from' | translate}}</label>
 		<select [class.validation]="storage.touched" name="storage" id="storage" #storage="ngModel" required ngModel
 		        [(ngModel)]="storageNow">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
+			<option value="first">1</option>
+			<option value="second">2</option>
+			<option value="third">3</option>
 		</select>
 
 		<label for="storage-for">{{'move.to' | translate}}</label>
 		<select [class.validation]="storagefor.touched" name="storageFor" id="storage-for" #storagefor="ngModel" required
 		        ngModel>
-			<option *ngIf="storage.value !== '1'" value="1">1</option>
-			<option *ngIf="storage.value !== '2'" value="2">2</option>
-			<option *ngIf="storage.value !== '3'" value="3">3</option>
+			<option *ngIf="storage.value !== 'first'" value="first">1</option>
+			<option *ngIf="storage.value !== 'second'" value="second">2</option>
+			<option *ngIf="storage.value !== 'third'" value="third">3</option>
 			<option value="discard">{{'move.discard' | translate}}</option>
 		</select>
 
 		<label for="product">{{'shared.product' | translate}}</label>
-		<select [class.validation]="product.touched" name="product" id="product" #product="ngModel" (change)="setSelectProduct(product)" required ngModel>
-			<option *ngFor="let product of (getProducts(storage.value) | async)" [value]="product | json">{{product.name}}
+		<select [class.validation]="product.touched" name="product" id="product" #product="ngModel"
+		        required ngModel>
+			<!--(change)="setSelectProduct(product)"-->
+			<option *ngFor="let product of (getProducts(storage.value) | async)" [value]="product | json">{{product ? product.name : null}}
 			</option>
 		</select>
 
@@ -33,16 +35,16 @@
 			<option value="rawStuff">{{'shared.fractionList.rawStuff' | translate}}</option>
 		</select>
 
-		<ng-container *ngIf="fraction.value === 'rawStuff' && product.value">
-			<label for="delivery">{{'delivery.title' | translate}}</label>
-			<select [class.validation]="delivery.touched" name="delivery" id="delivery" #delivery="ngModel" required ngModel>
-				<option *ngFor="let deliveryItem of (deliveries$ | async)?.slice().reverse()" [value]="deliveryItem | json">
-					{{deliveryItem.date | date: 'dd.MM - HH:mm'}}
-					{{deliveryItem.provider}}
-					({{deliveryItem.big || 0}} / {{deliveryItem.small || 0}} / {{deliveryItem.standard || 0}} / {{deliveryItem.waste || 0}})
-				</option>
-			</select>
-		</ng-container>
+		<!--<ng-container *ngIf="fraction.value === 'rawStuff' && product.value">-->
+			<!--<label for="delivery">{{'delivery.title' | translate}}</label>-->
+			<!--<select [class.validation]="delivery.touched" name="delivery" id="delivery" #delivery="ngModel" required ngModel>-->
+				<!--<option *ngFor="let deliveryItem of (deliveries$ | async)?.slice().reverse()" [value]="deliveryItem | json">-->
+					<!--{{deliveryItem.date | date: 'dd.MM - HH:mm'}}-->
+					<!--{{deliveryItem.provider}}-->
+					<!--({{deliveryItem.big || 0}} / {{deliveryItem.small || 0}} / {{deliveryItem.standard || 0}} / {{deliveryItem.waste || 0}})-->
+				<!--</option>-->
+			<!--</select>-->
+		<!--</ng-container>-->
 
 		<input [class.validation]="weight.touched" type="number" placeholder="{{'shared.weight' | translate}}" name="weight"
 		       #weight="ngModel" required ngModel>
